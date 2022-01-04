@@ -13,11 +13,11 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="tel" class="sr-only">用户名</label>
-            <input id="tel" name="tel" type="tel" autocomplete="tel" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="请输入您的用户名" />
+            <input id="tel" name="tel" type="tel" autocomplete="tel" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-rose-300 focus:border-rose-300 focus:z-10 sm:text-sm" placeholder="请输入您的用户名" />
           </div>
           <div>
             <label for="password" class="sr-only">密码</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="请输入您的密码" />
+            <input id="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-rose-300 focus:border-rose-300 focus:z-10 sm:text-sm" placeholder="请输入您的密码" />
           </div>
         </div>
 

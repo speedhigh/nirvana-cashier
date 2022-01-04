@@ -3,6 +3,59 @@
     <!-- 订单分析 -->
     <div class="col-span-2 box-child">
       <h2>订单分析</h2>
+      <el-date-picker
+        v-model="dateValue"
+        type="daterange"
+        range-separator="—"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期"
+        class="mt-2.5"
+      >
+      </el-date-picker>
+      <div class="mt-5 grid grid-cols-3 gap-x-6">
+        <!-- 总成交量 -->
+        <div class="w-full">
+          <div class="flex items-center space-x-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <p class="font-bold">总成交量</p>
+          </div>
+          <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
+            <chart-bar
+              id="numCharts"
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :yData="[2, 15, 10, 20, 35]"
+            />
+          </div>
+        </div>
+        <!-- 总成交额 -->
+        <div class="w-full">
+          <div class="flex items-center space-x-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <p class="font-bold">总成交额</p>
+          </div>
+          <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
+            <chart-line
+              id="sumCharts"
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :yData="[2, 15, 10, 20, 35]"
+            />
+          </div>
+        </div>
+        <!-- 总支出收益 -->
+        <div class="w-full">
+          <div class="flex items-center space-x-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <p class="font-bold">总支出收益</p>
+          </div>
+          <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
+            <chart-line
+              id="expendCharts"
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :yData="[2, 15, 10, 20, 35]"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <!-- 最近订单 -->
     <div class="col-span-1 box-child">
@@ -29,11 +82,16 @@
         <div 
           v-for="i in 6" 
           :key="i" 
-          class="pt-5 pb-3.5 flex items-center border-b border-gray-100 last:border-none"
+          class="flex items-center cursor-pointer pr-2 hover:font-bold"
         >
-          <div class="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0" />
-          <p class="ml-1.5 line-1 flex-grow mr-4">处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请</p>
-          <p class="ml-auto cursor-pointer flex-shrink-0 text-[#F39800]">待处理></p>
+          <div class="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0 mr-2" />
+          <div 
+            class="flex items-center pt-5 pb-3.5"
+            :class="i === 6 ? '' : 'border-b border-gray-200'"
+          >
+            <p class="line-1 flex-grow mr-4 text-gray-500">处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请</p>
+            <p class="ml-auto flex-shrink-0 text-orange-700">待处理></p>
+          </div>
         </div>
       </div>
     </div>
@@ -41,15 +99,22 @@
 </template>
 
 <script>
-// import { ref } from 'vue'
+import { ref } from 'vue'
+import ChartBar from '../components/Chart/ChartBar.vue'
+import ChartLine from '../components/Chart/ChartLine.vue'
 // import api from '/src/api/index.js'
 export default {
+  components: {
+    ChartBar,
+    ChartLine
+  },
   setup() {
     // const banners = ref([])
     // api.get("/open/home/get_banner").then((res) => { banners.value = res.data.data })
     // return {
     //   banners
     // }
+    const dateValue = ref('')
     const orderList = [
       {
         date: '2016-05-03',
@@ -98,7 +163,8 @@ export default {
       }
     ]
     return {
-      orderList
+      orderList,
+      dateValue
     }
   }
 }
@@ -112,6 +178,6 @@ export default {
     @apply w-full grid grid-cols-2 gap-4
   }
   .box-child {
-    @apply w-full h-full bg-white rounded py-4 px-6
+    @apply w-full h-full bg-white rounded-lg py-4 px-6
   }
 </style>

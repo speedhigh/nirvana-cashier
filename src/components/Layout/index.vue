@@ -3,7 +3,7 @@
     <el-aside :width="isCollapse ? '60px' : '208px'">
       <el-menu
         class="h-full"
-        active-text-color="#fb7185"
+        active-text-color="#fde047"
         background-color="#545c64"
         text-color="#fff"
         :default-active="$route.meta.name"
