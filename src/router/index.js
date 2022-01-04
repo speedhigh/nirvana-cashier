@@ -10,8 +10,8 @@ const routes = [
   /** -----登录页----- **/
   {
     path: '/login',
-    name: 'Login',
-    component:() => import('../views/Login.vue')
+    name: 'login',
+    component:() => import('../views/login.vue')
   },
 
   /** -----首页----- **/

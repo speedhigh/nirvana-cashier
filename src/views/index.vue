@@ -8,7 +8,7 @@
     <div class="col-span-1 box-child">
       <div class="flex items-center">
         <h2>最近订单</h2>
-        <p class="ml-auto text-gray-500 cursor-pointer">查看更多 ></p>
+        <p class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></p>
       </div>
       <el-table :data="orderList" border style="width: 100%" class="mt-4">
         <el-table-column prop="date" label="时间" width="132" />
@@ -23,10 +23,14 @@
     <div class="col-span-1 box-child">
       <div class="flex items-center">
         <h2>待办信息</h2>
-        <p class="ml-auto text-gray-500 cursor-pointer">查看更多 ></p>
+        <p class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></p>
       </div>
       <div class="mt-2.5">
-        <div v-for="i in 6" :key="i" class="pt-5 pb-3.5 flex items-center border-b border-gray-100">
+        <div 
+          v-for="i in 6" 
+          :key="i" 
+          class="pt-5 pb-3.5 flex items-center border-b border-gray-100 last:border-none"
+        >
           <div class="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0" />
           <p class="ml-1.5 line-1 flex-grow mr-4">处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请</p>
           <p class="ml-auto cursor-pointer flex-shrink-0 text-[#F39800]">待处理></p>
@@ -108,6 +112,6 @@ export default {
     @apply w-full grid grid-cols-2 gap-4
   }
   .box-child {
-    @apply w-full h-96 bg-white rounded py-4 px-6
+    @apply w-full h-full bg-white rounded py-4 px-6
   }
 </style>
