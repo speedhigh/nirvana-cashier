@@ -53,7 +53,12 @@ export default {
               offset: 1,
               color: 'rgba(248,113,113,0.1)'
             }]),
-				  }
+				  },
+          label: {
+            show: true,
+            position: 'top',
+            valueAnimation: true
+          }
         }
       ]
     })

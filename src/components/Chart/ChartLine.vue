@@ -48,7 +48,12 @@ export default {
           data: props.yData,
           itemStyle:{
 					  color: '#f87171'
-				  }
+				  },
+          label: {
+            show: true,
+            position: 'top',
+            valueAnimation: true
+          }
         }
       ]
     })

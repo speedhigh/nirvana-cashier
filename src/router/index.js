@@ -25,7 +25,8 @@ const routes = [
         name: 'Home',
         component:() => import('../views/index.vue'),
         meta: {
-          name: 'Home'
+          name: 'Home',
+          breadcrumb : [{ text: '首页', url: '/home' }]
         }
       }
     ]
@@ -43,7 +44,8 @@ const routes = [
         name: 'TodoList',
         component:() => import('../views/todo/index.vue'),
         meta: {
-          name: 'TodoList'
+          name: 'TodoList',
+          breadcrumb : [{ text: '待办信息', url: '/todo/list' }]
         }
       }
     ]
@@ -62,7 +64,8 @@ const routes = [
         name: 'OrderList',
         component:() => import('../views/data/order/index.vue'),
         meta: {
-          name: 'OrderList'
+          name: 'OrderList',
+          breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }]
         }
       },
       // 订单详情
@@ -71,7 +74,8 @@ const routes = [
         name: 'OrderDetail',
         component:() => import('../views/data/order/detail.vue'),
         meta: {
-          name: 'OrderDetail'
+          name: 'OrderList',
+          breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }, { text: '订单详情', url: '/data/order/detail/:id' }]
         }
       },
       // 订单分析
@@ -80,43 +84,48 @@ const routes = [
         name: 'OrderAnalyze',
         component:() => import('../views/data/order/analyze.vue'),
         meta: {
-          name: 'OrderAnalyze'
+          name: 'OrderAnalyze',
+          breadcrumb : [{ text: '数据分析', url: '/data/order/analyze' }, { text: '订单分析', url: '/data/order/analyze' }]
         }
       },
-      // 大客户列表
+      // 大客户数据
       {
         path: '/data/cnewb',
         name: 'CnewbList',
         component:() => import('../views/data/cnewb/index.vue'),
         meta: {
-          name: 'CnewbList'
+          name: 'CnewbList',
+          breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }]
         }
       },
-      // 大客户详情
+      // 大客户数据详情
       {
         path: '/data/cnewb/detail/:id',
         name: 'CnewbDetail',
         component:() => import('../views/data/cnewb/detail.vue'),
         meta: {
-          name: 'CnewbDetail'
+          name: 'CnewbDetail',
+          breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }, { text: '大客户数据详情', url: '/data/cnewb/detail/:id' }]
         }
       },
-      // 高级经理列表
+      // 高级经理数据
       {
         path: '/data/newb',
         name: 'NewbList',
         component:() => import('../views/data/newb/index.vue'),
         meta: {
-          name: 'NewbList'
+          name: 'NewbList',
+          breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据', url: '/data/newb' }]
         }
       },
-      // 高级经理详情
+      // 高级经理数据详情
       {
         path: '/data/newb/detail/:id',
         name: 'NewbDetail',
         component:() => import('../views/data/newb/detail.vue'),
         meta: {
-          name: 'NewbDetail'
+          name: 'NewbDetail',
+          breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb/detail/:id' }]
         }
       },
     ]
@@ -134,7 +143,8 @@ const routes = [
         name: 'Withdraw',
         component:() => import('../views/withdraw/index.vue'),
         meta: {
-          name: 'Withdraw'
+          name: 'Withdraw',
+          breadcrumb : [{ text: '提现管理', url: '/withdraw/list' }]
         }
       }
     ]
@@ -144,7 +154,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*', 
     name: 'NotFound', 
-    component:() => import('../views/NotFound.vue')
+    component:() => import('../views/404/index.vue')
   }
 ]
 

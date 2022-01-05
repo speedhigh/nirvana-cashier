@@ -1,11 +1,12 @@
 <template>
   <el-container class="h-screen">
-    <el-aside :width="isCollapse ? '60px' : '208px'">
+    <!-- 侧边栏 -->
+    <el-aside :width="isCollapse ? '65px' : '208px'">
       <el-menu
-        class="h-full"
-        active-text-color="#fde047"
-        background-color="#545c64"
-        text-color="#fff"
+        class="h-full shadow-md"
+        active-text-color="#b91c1c"
+        background-color="#f1f5f9"
+        text-color="#111827"
         :default-active="$route.meta.name"
         :collapse="isCollapse"
         :collapse-transition="false"
@@ -17,8 +18,8 @@
               <img :src="LogoImg" alt="logo" width="36" height="36" class="rounded-md w-full h-full">
             </div>
             <div v-show="!isCollapse" class="pt-1">
-              <p class="text-white">香港木子网</p>
-              <p class="text-xs text-gray-200">muzimed.com</p>
+              <p>香港木子网</p>
+              <p class="text-xs text-gray-600">muzimed.com</p>
             </div>
           </router-link>
         </div>
@@ -65,7 +66,7 @@
 
     <el-container>
       <!-- 头部样式 -->
-      <el-header class="border-b border-gray-300">
+      <el-header class="border-b border-gray-100">
         <div class="w-full h-full flex items-center">
           <div class="pr-4 mr-6 border-r border-gray-300 cursor-pointer" @click="isCollapse = !isCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,6 +83,23 @@
         </div>
       </el-header>
 
+      <!-- 面包屑 -->
+      <div class="w-full h-12 bg-white flex items-center px-6 border-b border-gray-200">
+        <div 
+          v-for="(item, index) in $route.meta.breadcrumb" 
+          :key="index"
+          class="flex items-center"
+        >
+          <div 
+            :class="$route.meta.breadcrumb.length - index === 1 ? 'text-red-700 cursor-default font-bold' : 'cursor-pointer'"
+            @click="jump(item.url, item.text)"
+          >
+            {{ item.text }}
+          </div>
+          <div v-if="index < $route.meta.breadcrumb.length - 1" class="mx-2">></div>
+        </div>
+      </div>
+
       <el-main class="bg-gray-100">
         <router-view></router-view>
       </el-main>
@@ -92,16 +110,20 @@
 
 <script>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import LogoImg from '/src/assets/logo.png'
 export default {
   setup() {
+    const router = useRouter()
     const path = useRoute().path
     const isCollapse = ref(false)
     return {
       LogoImg,
       path,
-      isCollapse
+      isCollapse,
+      jump(url, text) {
+        if(url) router.push({ path: url })
+      }
     }
   }
 }

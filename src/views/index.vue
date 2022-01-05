@@ -22,7 +22,7 @@
           <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
             <chart-bar
               id="numCharts"
-              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '2021-12-31']" 
               :yData="[2, 15, 10, 20, 35]"
             />
           </div>
@@ -36,21 +36,21 @@
           <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
             <chart-line
               id="sumCharts"
-              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '2021-12-31']" 
               :yData="[2, 15, 10, 20, 35]"
             />
           </div>
         </div>
-        <!-- 总支出收益 -->
+        <!-- 总收益 -->
         <div class="w-full">
           <div class="flex items-center space-x-2">
             <div class="w-1.5 h-1.5 rounded-full bg-orange-400" />
-            <p class="font-bold">总支出收益</p>
+            <p class="font-bold">总收益</p>
           </div>
           <div class="mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2">
             <chart-line
               id="expendCharts"
-              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '总计']" 
+              :xData="['2021-12-27', '2021-12-24', '2021-12-23', '2021-12-29', '2021-12-31']" 
               :yData="[2, 15, 10, 20, 35]"
             />
           </div>
@@ -61,39 +61,45 @@
     <div class="col-span-1 box-child">
       <div class="flex items-center">
         <h2>最近订单</h2>
-        <p class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></p>
+        <router-link to="/data/order" class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></router-link>
       </div>
-      <el-table :data="orderList" border style="width: 100%" class="mt-4">
-        <el-table-column prop="date" label="时间" width="132" />
-        <el-table-column prop="id" label="高级经理Id" width="132" />
-        <el-table-column prop="name" label="高级经理用户名" width="132" />
-        <el-table-column prop="turnover" label="成交额(元)" width="132" />
-        <el-table-column prop="income" label="收益额(元)" width="132" />
-        <el-table-column prop="income" label="上级ID" />
-      </el-table>
+      <div v-if="orderList.length > 0" class="mt-4">
+        <el-table :data="orderList" border style="width: 100%">
+          <el-table-column prop="date" label="时间" width="132" />
+          <el-table-column prop="id" label="高级经理Id" width="132" />
+          <el-table-column prop="name" label="高级经理用户名" width="132" />
+          <el-table-column prop="turnover" label="成交额(元)" width="132" />
+          <el-table-column prop="income" label="收益额(元)" width="132" />
+          <el-table-column prop="income" label="上级ID" />
+        </el-table>
+      </div>
+      <el-empty v-else description="暂无订单" class="mt-6" />
     </div>
     <!-- 待办信息 -->
     <div class="col-span-1 box-child">
       <div class="flex items-center">
         <h2>待办信息</h2>
-        <p class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></p>
+        <router-link to="/todo/list" class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800">查看更多 ></router-link>
       </div>
-      <div class="mt-2.5">
+      <div v-if="orderList.length > 0" class="mt-2.5">
         <div 
-          v-for="i in 6" 
-          :key="i" 
+          v-for="(item, index) in orderList"
+          :key="index" 
           class="flex items-center cursor-pointer pr-2 hover:font-bold"
         >
-          <div class="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0 mr-2" />
+          <div class="pt-5 pb-3.5 flex-shrink-0 mr-2">
+            <div class="w-2 h-2 rounded-full bg-gray-400" />
+          </div>
           <div 
-            class="flex items-center pt-5 pb-3.5"
-            :class="i === 6 ? '' : 'border-b border-gray-200'"
+            class="flex-grow flex items-center pt-5 pb-3.5"
+            :class="index === orderList.length - 1 ? '' : 'border-b border-gray-200'"
           >
-            <p class="line-1 flex-grow mr-4 text-gray-500">处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请</p>
-            <p class="ml-auto flex-shrink-0 text-orange-700">待处理></p>
+            <p class="line-1 flex-grow mr-4 text-gray-500">处理来自大客户燕喜堂的提现收益申请处理来自大客户燕喜堂的提现收益申请申请</p>
+            <p class="ml-auto flex-shrink-0 text-red-700">待处理></p>
           </div>
         </div>
       </div>
+      <el-empty v-else description="暂无信息" class="mt-6" />
     </div>
   </div>
 </template>
@@ -116,51 +122,11 @@ export default {
     // }
     const dateValue = ref('')
     const orderList = [
-      {
-        date: '2016-05-03',
-        id: '1233113',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-        turnover: '2456',
-        income: '6787',
-        cnewb_id: '167843'
-      },
-      {
-        date: '2016-05-03',
-        id: '1233113',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-        turnover: '2456',
-        income: '6787',
-        cnewb_id: '167843'
-      },
-      {
-        date: '2016-05-03',
-        id: '1233113',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-        turnover: '2456',
-        income: '6787',
-        cnewb_id: '167843'
-      },
-      {
-        date: '2016-05-03',
-        id: '1233113',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-        turnover: '2456',
-        income: '6787',
-        cnewb_id: '167843'
-      },
-      {
-        date: '2016-05-03',
-        id: '1233113',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-        turnover: '2456',
-        income: '6787',
-        cnewb_id: '167843'
-      }
+      { date: '2016-05-03', id: '1233113', name: 'Tom', address: 'No. 189, Grove St, Los Angeles', turnover: '2456', income: '6787', cnewb_id: '167843' },
+      { date: '2016-05-03', id: '1233113', name: 'Tom', address: 'No. 189, Grove St, Los Angeles', turnover: '2456', income: '6787', cnewb_id: '167843' },
+      { date: '2016-05-03', id: '1233113', name: 'Tom', address: 'No. 189, Grove St, Los Angeles', turnover: '2456', income: '6787', cnewb_id: '167843' },
+      { date: '2016-05-03', id: '1233113', name: 'Tom', address: 'No. 189, Grove St, Los Angeles', turnover: '2456', income: '6787', cnewb_id: '167843' },
+      { date: '2016-05-03', id: '1233113', name: 'Tom', address: 'No. 189, Grove St, Los Angeles', turnover: '2456', income: '6787', cnewb_id: '167843' }
     ]
     return {
       orderList,
@@ -178,6 +144,6 @@ export default {
     @apply w-full grid grid-cols-2 gap-4
   }
   .box-child {
-    @apply w-full h-full bg-white rounded-lg py-4 px-6
+    @apply w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm
   }
 </style>
