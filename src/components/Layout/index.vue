@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-screen">
     <!-- 侧边栏 -->
-    <el-aside :width="isCollapse ? '65px' : '208px'">
+    <el-aside :width="isCollapse ? '65px' : '208px'" class="relative">
       <el-menu
         class="h-full shadow-md"
         active-text-color="#b91c1c"
@@ -48,10 +48,10 @@
             </svg>
             <span class="ml-2">数据分析</span>
           </template>
-          <el-menu-item index="OrderList" :route="{path: '/data/order'}">订单数据</el-menu-item>
-          <el-menu-item index="OrderInfo" :route="{path: '/data/order/analyze'}">订单分析</el-menu-item>
-          <el-menu-item index="CnewbList" :route="{path: '/data/cnewb'}">大客户数据</el-menu-item>
-          <el-menu-item index="NewbList" :route="{path: '/data/newb'}">高级经理数据</el-menu-item>
+          <el-menu-item index="OrderData" :route="{path: '/data/order'}">订单数据</el-menu-item>
+          <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">订单分析</el-menu-item>
+          <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}">大客户数据</el-menu-item>
+          <el-menu-item index="NewbData" :route="{path: '/data/newb'}">高级经理数据</el-menu-item>
         </el-sub-menu>
 
         <!-- 提现管理 -->
@@ -62,6 +62,17 @@
           <span>提现管理</span>
         </el-menu-item>
       </el-menu>
+
+      <div 
+        class="fixed bottom-0 pt-3" 
+        :class="isCollapse ? 'px-3.5 w-[65px] py-4' : 'px-6 mb-4 w-[208px] border-t border-gray-300 flex space-x-3'"
+      >
+        <el-avatar :size="40" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="avatar" />
+        <div v-show="!isCollapse" class="space-y-0.5">
+          <p class="text-sm">安妮谷拉丝</p>
+          <p class="text-xs text-gray-600">财务-出纳</p>
+        </div>
+      </div>
     </el-aside>
 
     <el-container>
@@ -73,13 +84,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isCollapse ? ' M4 6h16M4 12h16M4 18h16' : 'M4 6h16M4 12h8m-8 6h16'" />
             </svg>
           </div>
-          <!-- <router-link to="/" class="flex items-center space-x-2 cursor-pointer">
-            <img :src="LogoImg" alt="logo" width="35" height="35" class="bg-red-300 rounded-md">
-            <div class="pt-1">
-              <p class="text-gray-700">香港木子网</p>
-              <p class="text-xs text-gray-600">muzimed.com</p>
-            </div>
-          </router-link> -->
         </div>
       </el-header>
 
@@ -128,7 +132,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

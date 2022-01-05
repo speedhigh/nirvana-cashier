@@ -64,7 +64,7 @@ const routes = [
         name: 'OrderList',
         component:() => import('../views/data/order/index.vue'),
         meta: {
-          name: 'OrderList',
+          name: 'OrderData',
           breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }]
         }
       },
@@ -74,18 +74,18 @@ const routes = [
         name: 'OrderDetail',
         component:() => import('../views/data/order/detail.vue'),
         meta: {
-          name: 'OrderList',
+          name: 'OrderData',
           breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }, { text: '订单详情', url: '/data/order/detail/:id' }]
         }
       },
       // 订单分析
       {
-        path: '/data/order/analyze',
+        path: '/data/analyze',
         name: 'OrderAnalyze',
-        component:() => import('../views/data/order/analyze.vue'),
+        component:() => import('../views/data/analyze/index.vue'),
         meta: {
           name: 'OrderAnalyze',
-          breadcrumb : [{ text: '数据分析', url: '/data/order/analyze' }, { text: '订单分析', url: '/data/order/analyze' }]
+          breadcrumb : [{ text: '数据分析', url: '/data/analyze/index.vue' }, { text: '订单分析', url: '/data/analyze/index.vue' }]
         }
       },
       // 大客户数据
@@ -94,7 +94,7 @@ const routes = [
         name: 'CnewbList',
         component:() => import('../views/data/cnewb/index.vue'),
         meta: {
-          name: 'CnewbList',
+          name: 'CnewbData',
           breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }]
         }
       },
@@ -104,7 +104,7 @@ const routes = [
         name: 'CnewbDetail',
         component:() => import('../views/data/cnewb/detail.vue'),
         meta: {
-          name: 'CnewbDetail',
+          name: 'CnewbData',
           breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }, { text: '大客户数据详情', url: '/data/cnewb/detail/:id' }]
         }
       },
@@ -114,7 +114,7 @@ const routes = [
         name: 'NewbList',
         component:() => import('../views/data/newb/index.vue'),
         meta: {
-          name: 'NewbList',
+          name: 'NewbData',
           breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据', url: '/data/newb' }]
         }
       },
@@ -124,7 +124,7 @@ const routes = [
         name: 'NewbDetail',
         component:() => import('../views/data/newb/detail.vue'),
         meta: {
-          name: 'NewbDetail',
+          name: 'NewbData',
           breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb/detail/:id' }]
         }
       },
