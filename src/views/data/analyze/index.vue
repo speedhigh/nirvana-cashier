@@ -21,6 +21,7 @@
 
 <script>
 import { ref } from 'vue'
+import api from '/src/api/index.js'
 import ChartPie from '../../../components/Chart/ChartPie.vue'
 export default {
   components: {
@@ -35,6 +36,9 @@ export default {
       {value: 10, name: '大幕制药符合维生素钙片 草莓味（120粒）'},
       {value: 5, name: '高市制药 龙角三S（32粒）'}
     ]
+    api.get('/home/getOrderFenXi').then((res) => {
+      console.log(res)
+    })
     return {
       dateValue,
       pieData
@@ -42,7 +46,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

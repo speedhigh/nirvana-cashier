@@ -49,7 +49,7 @@
             <span class="ml-2">数据分析</span>
           </template>
           <el-menu-item index="OrderData" :route="{path: '/data/order'}">订单数据</el-menu-item>
-          <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">订单分析</el-menu-item>
+          <!-- <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">订单分析</el-menu-item> -->
           <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}">大客户数据</el-menu-item>
           <el-menu-item index="NewbData" :route="{path: '/data/newb'}">高级经理数据</el-menu-item>
         </el-sub-menu>
@@ -67,9 +67,9 @@
         class="fixed bottom-0 pt-3" 
         :class="isCollapse ? 'px-3.5 w-[65px] py-4' : 'px-6 mb-4 w-[208px] border-t border-gray-300 flex space-x-3'"
       >
-        <el-avatar :size="40" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="avatar" />
+        <el-avatar :size="40" width="40" height="40" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="avatar" />
         <div v-show="!isCollapse" class="space-y-0.5">
-          <p class="text-sm">安妮谷拉丝</p>
+          <p class="text-sm">{{ user.name }}</p>
           <p class="text-xs text-gray-600">财务-出纳</p>
         </div>
       </div>
@@ -84,6 +84,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isCollapse ? ' M4 6h16M4 12h16M4 18h16' : 'M4 6h16M4 12h8m-8 6h16'" />
             </svg>
           </div>
+          <p class="ml-auto cursor-pointer" @click="quit">退出登录</p>
         </div>
       </el-header>
 
@@ -113,20 +114,40 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { ElMessageBox, ElMessage } from 'element-plus'
 import LogoImg from '/src/assets/logo.png'
 export default {
   setup() {
     const router = useRouter()
     const path = useRoute().path
     const isCollapse = ref(false)
+    const user = reactive({
+      name: sessionStorage.getItem('name') 
+    })
     return {
       LogoImg,
       path,
       isCollapse,
+      user,
       jump(url, text) {
         if(url) router.push({ path: url })
+      },
+      quit() {
+        ElMessageBox.confirm( '确定要退出登录吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'info',
+          showClose: false
+        })
+        .then(() => {
+          sessionStorage.removeItem('token')
+          router.replace('/login')
+          ElMessage.success('已退出登录')
+        }).catch(() => {
+          // 取消通过审批
+        })
       }
     }
   }

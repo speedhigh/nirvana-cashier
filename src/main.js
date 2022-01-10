@@ -3,11 +3,18 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import './index.css'
+import 'default-passive-events'
 import App from './App.vue'
 import router from './router'
-// import * as echarts from 'echarts';
 
 const app = createApp(App)
+
+// 设置全局组件
+import BaseChart from './components/BaseChart.vue'
+import BasePagination from './components/BasePagination.vue'
+
+app.component('BaseChart', BaseChart)
+app.component('BasePagination', BasePagination)
 
 app.directive('resize', {
   // 当被绑定的元素挂载到 DOM 中时……
@@ -16,7 +23,7 @@ app.directive('resize', {
      let t = null
      return function () {
        if (t) {
-         clearTimeout(t)
+        clearTimeout(t)
        }
        const context = this
        const args = arguments

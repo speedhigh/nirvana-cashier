@@ -10,4 +10,7 @@ input, button, select, textarea {
 textarea { 
   resize: none !important
 }
+.el-table .warning-row {
+  background: oldlace;
+}
 </style>

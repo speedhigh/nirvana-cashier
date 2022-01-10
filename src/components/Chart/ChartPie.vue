@@ -57,8 +57,9 @@ export default {
         }
       ]
     })
+    let myChart
     onMounted(() => {
-      let myChart = echarts.init(document.getElementById(props.id))
+      myChart = echarts.init(document.getElementById(props.id))
       window.onresize = function() {
         myChart.resize()
       }
@@ -67,7 +68,7 @@ export default {
     return {
       option,
       resize() {
-        echarts.init(document.getElementById(props.id)).resize()
+        myChart.resize()
       }
     }
   }

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, toRefs, watch } from 'vue'
 import * as echarts from 'echarts'
 export default {
   props: {
@@ -21,7 +21,14 @@ export default {
     }
   },
   setup(props) {
-    let option = ref({
+    const { options } = toRefs(props)
+    watch( options, newOptions => {
+      option.value.xAxis.data = newOptions.xData
+      option.value.series[0].data = newOptions.yData
+    },
+    { deep: true }
+    )
+    const option = ref({
       xAxis: {
         type: 'category',
         data: props.xData,
@@ -62,8 +69,9 @@ export default {
         }
       ]
     })
+    let myChart
     onMounted(() => {
-      let myChart = echarts.init(document.getElementById(props.id))
+      myChart = echarts.init(document.getElementById(props.id))
       window.onresize = function() {
         myChart.resize()
       }
@@ -72,7 +80,7 @@ export default {
     return {
       option,
       resize() {
-        echarts.init(document.getElementById(props.id)).resize()
+        myChart.resize()
       }
     }
   }

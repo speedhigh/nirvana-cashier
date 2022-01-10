@@ -1,5 +1,6 @@
-import axios from 'axios';
-// import router from '../router';
+import axios from 'axios'
+import { ElMessageBox } from 'element-plus'
+import router from '../router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import qs from 'qs'
@@ -27,12 +28,14 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   res => {
     NProgress.done()
-    if(res.data.code === 20002) {
-      if( window.sessionStorage.getItem("token") && window.sessionStorage.getItem("id") ) {
-        window.sessionStorage.removeItem("token")
-        window.sessionStorage.removeItem("id")
-        alert('登录时效已过期，请重新登录')
-      }
+    if(res.data.code === 20002 && window.sessionStorage.getItem("token")) {
+      window.sessionStorage.removeItem("token")
+      ElMessageBox.alert('登录超时，请重新登录', '提示', {
+        type: 'warning', 
+        showClose: false, 
+        confirmButtonText: '确认', 
+        callback:() => { router.push('/login') }
+      })
     }
     return res
   },

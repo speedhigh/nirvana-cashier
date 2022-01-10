@@ -23,7 +23,7 @@ const routes = [
       {
         path: '/home',
         name: 'Home',
-        component:() => import('../views/index.vue'),
+        component:() => import('../views/home/index.vue'),
         meta: {
           name: 'Home',
           breadcrumb : [{ text: '首页', url: '/home' }]
@@ -161,6 +161,14 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+
+
+router.beforeEach((to,from,next) => {
+  if(to.path === '/login') return next()
+  const tokenStr = window.sessionStorage.getItem("token")
+  if(!tokenStr) return next('/login')
+  next()
 })
 
 export default router
