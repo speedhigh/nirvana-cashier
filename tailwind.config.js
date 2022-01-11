@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'login-bg': "url('/src/assets/bg.jpg')",
+        'aside-bg': "url('https://cdn.pixabay.com/photo/2021/12/26/17/30/beach-6895599__340.jpg')",
       }
     },
   },

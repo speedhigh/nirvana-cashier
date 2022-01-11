@@ -165,9 +165,9 @@ const router = createRouter({
 
 
 router.beforeEach((to,from,next) => {
-  if(to.path === '/login') return next()
-  const tokenStr = window.sessionStorage.getItem("token")
-  if(!tokenStr) return next('/login')
+  // if(to.path === '/login') return next()
+  // const tokenStr = window.sessionStorage.getItem("token")
+  // if(!tokenStr) return next('/login')
   next()
 })
 

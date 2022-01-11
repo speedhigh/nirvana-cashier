@@ -3,16 +3,15 @@
     <!-- 侧边栏 -->
     <el-aside :width="isCollapse ? '65px' : '208px'" class="relative">
       <el-menu
-        class="h-full shadow-md"
+        class="h-full shadow-md reactive"
         active-text-color="#b91c1c"
-        background-color="#f1f5f9"
         text-color="#111827"
         :default-active="$route.meta.name"
         :collapse="isCollapse"
         :collapse-transition="false"
         router
       >
-        <div class="h-[3.75rem] py-4" :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'">
+        <div class="h-[3.75rem] py-4 z-50 relative" :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'">
           <router-link to="/" class="flex items-center space-x-2 cursor-pointer">
             <div class="rounded-md flex-shrink-0"  :class="isCollapse ? 'w-7 h-7' : 'w-9 h-9'">
               <img :src="LogoImg" alt="logo" width="36" height="36" class="rounded-md w-full h-full">
@@ -153,3 +152,25 @@ export default {
   }
 }
 </script>
+<style scoped>
+.el-menu-item.is-active {
+  color:#b91c1c;
+  background: rgba(248, 206, 201, 0.4) !important;
+}
+/* .el-menu-item:hover {
+  color:#b91c1c;
+  background: rgba(248, 206, 201, 0.4) !important;
+} */
+/* .el-sub-menu__title:hover {
+  color:#b91c1c;
+  background: rgba(248, 206, 201, 0.4) !important;
+} */
+/* .el-sub-menu:hover {
+  color:#b91c1c;
+  background: rgba(248, 206, 201, 0.4) !important;
+}
+.el-sub-menu__title:hover {
+  color:#b91c1c;
+  background: rgba(248, 206, 201, 0.4) !important;
+} */
+</style>
