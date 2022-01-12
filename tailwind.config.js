@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'login-bg': "url('/src/assets/login_bg_a.webp')",
+        'login-bg': "url('/src/assets/login_bg.webp')",
+        'login-bg-a': "url('/src/assets/login_bg_a.webp')",
         'aside-bg': "url('/src/assets/aside_bg.webp')",
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-login-bg bg-cover bg-no-repeat">
+  <div class="w-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-login-bg-a bg-cover bg-no-repeat">
     <div class="max-w-md w-full space-y-8 p-12 rounded-md shadow-lg backdrop-blur-xl bg-[rgba(255,255,255,0.6)]">
       <div>
         <img class="mx-auto h-12 w-auto rounded-2xl" :src="logoImg" alt="Workflow" />
