@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-login-bg bg-cover bg-center bg-no-repeat">
-    <div class="max-w-md w-full space-y-8 p-12 rounded-md shadow-lg backdrop-blur-sm" style="background:rgba(255,255,255,0.9)">
+  <div class="w-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-login-bg bg-cover bg-no-repeat">
+    <div class="max-w-md w-full space-y-8 p-12 rounded-md shadow-lg backdrop-blur-xl bg-[rgba(255,255,255,0.6)]">
       <div>
         <img class="mx-auto h-12 w-auto rounded-2xl" :src="logoImg" alt="Workflow" />
         <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
           登录您的账户
         </h1>
-        <p class="text-center mt-2 text-gray-400">木子网财务后台</p>
+        <p class="text-center mt-2 text-gray-600">木子网财务后台</p>
       </div>
       <form class="mt-8 space-y-6">
         <input type="hidden" name="remember" value="true" />

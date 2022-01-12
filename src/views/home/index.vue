@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="w-full h-full grid grid-cols-2 gap-4">
     <!-- 订单分析 -->
     <section-analyze />
     <!-- 最近订单 -->
@@ -49,9 +49,6 @@ export default {
 </script>
 
 <style scoped>
-  main {
-    @apply w-full grid grid-cols-2 gap-4
-  }
   section {
     @apply w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm
   }

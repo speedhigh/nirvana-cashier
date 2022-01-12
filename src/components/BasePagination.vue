@@ -1,7 +1,13 @@
 <template>
   <div v-loading="loading" class="w-full text-center">
     <slot v-if="localList.length > 0" :list="localList" />
-    <el-empty v-if="localList.length === 0 && !loading" description=" " class="mt-6 text-sm text-gray-500">暂无数据</el-empty>
+    <el-empty 
+      v-if="localList.length === 0 && !loading" 
+      description=" " 
+      class="mt-36 text-sm text-gray-500"
+    >
+      暂无数据
+    </el-empty>
     <el-pagination
       v-if="localList.length > 0"
       v-model:currentPage="currentPage"

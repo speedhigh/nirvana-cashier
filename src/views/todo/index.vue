@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%] max-h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
+  <div class="w-[80%] h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
     <h2>待办信息</h2>
     <base-pagination
       ref="paginationRef"

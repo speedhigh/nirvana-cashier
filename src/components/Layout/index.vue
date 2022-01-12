@@ -1,17 +1,25 @@
 <template>
-  <el-container class="h-screen">
+  <el-container class="h-screen relative">
+    <div 
+      class="absolute left-0 inset-y-auto h-full z-10 bg-aside-bg bg-center bg-no-repeat bg-cover" 
+      :class="isCollapse ? 'w-[64px]' : 'w-[208px]'"
+    />
     <!-- 侧边栏 -->
-    <el-aside :width="isCollapse ? '65px' : '208px'" class="relative">
+    <el-aside :width="isCollapse ? '65px' : '208px'" class="relative z-50">
       <el-menu
-        class="h-full shadow-md reactive"
+        class="h-full shadow-md reactive backdrop-blur-sm bg-[rgba(255,255,255,0.9)]"
         active-text-color="#b91c1c"
         text-color="#111827"
+        :unique-opened="true"
         :default-active="$route.meta.name"
         :collapse="isCollapse"
         :collapse-transition="false"
         router
       >
-        <div class="h-[3.75rem] py-4 z-50 relative" :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'">
+        <div 
+          class="h-[3.75rem] py-4 z-50 relative" 
+          :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'"
+        >
           <router-link to="/" class="flex items-center space-x-2 cursor-pointer">
             <div class="rounded-md flex-shrink-0"  :class="isCollapse ? 'w-7 h-7' : 'w-9 h-9'">
               <img :src="LogoImg" alt="logo" width="36" height="36" class="rounded-md w-full h-full">
@@ -47,10 +55,10 @@
             </svg>
             <span class="ml-2">数据分析</span>
           </template>
-          <el-menu-item index="OrderData" :route="{path: '/data/order'}">订单数据</el-menu-item>
+          <el-menu-item index="OrderData" :route="{path: '/data/order'}" class="bg-gray-50">订单数据</el-menu-item>
           <!-- <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">订单分析</el-menu-item> -->
-          <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}">大客户数据</el-menu-item>
-          <el-menu-item index="NewbData" :route="{path: '/data/newb'}">高级经理数据</el-menu-item>
+          <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}" class="bg-gray-50">大客户数据</el-menu-item>
+          <el-menu-item index="NewbData" :route="{path: '/data/newb'}" class="bg-gray-50">高级经理数据</el-menu-item>
         </el-sub-menu>
 
         <!-- 提现管理 -->
@@ -75,6 +83,7 @@
     </el-aside>
 
     <el-container>
+
       <!-- 头部样式 -->
       <el-header class="border-b border-gray-100">
         <div class="w-full h-full flex items-center">
@@ -83,7 +92,40 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isCollapse ? ' M4 6h16M4 12h16M4 18h16' : 'M4 6h16M4 12h8m-8 6h16'" />
             </svg>
           </div>
-          <p class="ml-auto cursor-pointer" @click="quit">退出登录</p>
+          <!-- 全屏 -->
+          <el-tooltip
+            class="ml-auto cursor-pointer"
+            effect="dark"
+            :content="fullscreen ? '退出全屏' : '全屏'"
+            placement="bottom"
+          >
+            <div v-if="!fullscreen" @click="handleFullScreen">
+              <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M170.667 170.667V384H85.333V85.333H384v85.334H170.667zM853.333 384V170.667H640V85.333h298.667V384h-85.334zM170.667 640v213.333H384v85.334H85.333V640h85.334zm682.666 0h85.334v298.667H640v-85.334h213.333V640z" fill="#707070"/></svg>
+            </div>
+            <div :sss="fullscreen" v-else @click="handleFullScreen">
+              <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M298.667 298.667V85.333H384V384H85.333v-85.333h213.334zM725.333 85.333v213.334h213.334V384H640V85.333h85.333zM298.667 938.667V725.333H85.333V640H384v298.667h-85.333zm426.666 0H640V640h298.667v85.333H725.333v213.334z"/></svg>
+            </div>
+          </el-tooltip>
+          <!-- 个人信息（退出） -->
+          <el-dropdown class="ml-6">
+            <div class="flex items-center space-x-2">
+              <el-avatar
+                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+                alt="avatar"
+                :size="25" 
+                width="25" 
+                height="25"
+              />
+              <p>安妮谷拉丝</p>
+            </div>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>个人信息</el-dropdown-item>
+                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item @click="quit">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
       </el-header>
 
@@ -104,6 +146,7 @@
         </div>
       </div>
 
+      <!-- 主体 -->
       <el-main class="bg-gray-100">
         <router-view></router-view>
       </el-main>
@@ -113,9 +156,10 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { changeFullScreen, listenerEvent } from '../../until/fullScreen.js'
 import LogoImg from '/src/assets/logo.png'
 export default {
   setup() {
@@ -125,11 +169,22 @@ export default {
     const user = reactive({
       name: sessionStorage.getItem('name') 
     })
+    const data = reactive({
+      fullscreen: false
+    })
+    listenerEvent(() => {
+      data.fullscreen = !data.fullscreen
+    }, data)
+    // 全屏切换
+    const handleFullScreen = () => changeFullScreen(data)
+    const params = toRefs(data)
     return {
       LogoImg,
       path,
       isCollapse,
       user,
+      ...params,
+      handleFullScreen,
       jump(url, text) {
         if(url) router.push({ path: url })
       },
@@ -157,20 +212,4 @@ export default {
   color:#b91c1c;
   background: rgba(248, 206, 201, 0.4) !important;
 }
-/* .el-menu-item:hover {
-  color:#b91c1c;
-  background: rgba(248, 206, 201, 0.4) !important;
-} */
-/* .el-sub-menu__title:hover {
-  color:#b91c1c;
-  background: rgba(248, 206, 201, 0.4) !important;
-} */
-/* .el-sub-menu:hover {
-  color:#b91c1c;
-  background: rgba(248, 206, 201, 0.4) !important;
-}
-.el-sub-menu__title:hover {
-  color:#b91c1c;
-  background: rgba(248, 206, 201, 0.4) !important;
-} */
 </style>
