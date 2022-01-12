@@ -116,7 +116,7 @@
                 width="25" 
                 height="25"
               />
-              <p>安妮谷拉丝</p>
+              <p>{{ user.name }}</p>
             </div>
             <template #dropdown>
               <el-dropdown-menu>
