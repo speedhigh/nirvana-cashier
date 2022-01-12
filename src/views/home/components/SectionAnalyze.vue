@@ -5,15 +5,14 @@
     class="col-span-2 box-child"
   >
     <h2 class="font-bold text-lg">订单分析</h2>
-    <el-date-picker
+    <!-- <el-date-picker
       type="daterange"
       range-separator="—"
       start-placeholder="开始日期"
       end-placeholder="结束日期"
       class="mt-2.5"
-    />
+    /> -->
     <div class="mt-5 grid grid-cols-3 gap-x-6">
-
       <!-- 总成交量 -->
       <div v-if="numCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
@@ -23,7 +22,6 @@
           <base-chart :options="numCharts.options" />
         </div>
       </div>
-
       <!-- 总成交额 -->
       <div v-if="sumCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
@@ -33,7 +31,6 @@
           <base-chart :options="sumCharts.options" />
         </div>
       </div>
-
       <!-- 总收益 -->
       <div v-if="expendCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
@@ -43,7 +40,6 @@
           <base-chart :options="expendCharts.options" />
         </div>
       </div>
-
     </div>
   </section>
 </template>

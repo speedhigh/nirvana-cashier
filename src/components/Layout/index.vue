@@ -92,40 +92,54 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isCollapse ? ' M4 6h16M4 12h16M4 18h16' : 'M4 6h16M4 12h8m-8 6h16'" />
             </svg>
           </div>
-          <!-- 全屏 -->
-          <el-tooltip
-            class="ml-auto cursor-pointer"
-            effect="dark"
-            :content="fullscreen ? '退出全屏' : '全屏'"
-            placement="bottom"
-          >
-            <div v-if="!fullscreen" @click="handleFullScreen">
-              <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M170.667 170.667V384H85.333V85.333H384v85.334H170.667zM853.333 384V170.667H640V85.333h298.667V384h-85.334zM170.667 640v213.333H384v85.334H85.333V640h85.334zm682.666 0h85.334v298.667H640v-85.334h213.333V640z" fill="#707070"/></svg>
-            </div>
-            <div :sss="fullscreen" v-else @click="handleFullScreen">
-              <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M298.667 298.667V85.333H384V384H85.333v-85.333h213.334zM725.333 85.333v213.334h213.334V384H640V85.333h85.333zM298.667 938.667V725.333H85.333V640H384v298.667h-85.333zm426.666 0H640V640h298.667v85.333H725.333v213.334z"/></svg>
-            </div>
-          </el-tooltip>
-          <!-- 个人信息（退出） -->
-          <el-dropdown class="ml-6">
-            <div class="flex items-center space-x-2">
-              <el-avatar
-                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-                alt="avatar"
-                :size="25" 
-                width="25" 
-                height="25"
-              />
-              <p>{{ user.name }}</p>
-            </div>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>个人信息</el-dropdown-item>
-                <el-dropdown-item>修改密码</el-dropdown-item>
-                <el-dropdown-item @click="quit">退出登录</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+          <div class="ml-auto flex items-center space-x-6">
+            <!-- 全屏 -->
+            <el-tooltip
+              class="cursor-pointer"
+              effect="dark"
+              :content="fullscreen ? '退出全屏' : '全屏'"
+              placement="bottom"
+            >
+              <div v-if="!fullscreen" @click="handleFullScreen">
+                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M170.667 170.667V384H85.333V85.333H384v85.334H170.667zM853.333 384V170.667H640V85.333h298.667V384h-85.334zM170.667 640v213.333H384v85.334H85.333V640h85.334zm682.666 0h85.334v298.667H640v-85.334h213.333V640z" fill="#707070"/></svg>
+              </div>
+              <div :sss="fullscreen" v-else @click="handleFullScreen">
+                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23" height="23"><path d="M298.667 298.667V85.333H384V384H85.333v-85.333h213.334zM725.333 85.333v213.334h213.334V384H640V85.333h85.333zM298.667 938.667V725.333H85.333V640H384v298.667h-85.333zm426.666 0H640V640h298.667v85.333H725.333v213.334z"/></svg>
+              </div>
+            </el-tooltip>
+            <!-- 翻译 -->
+            <el-dropdown>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item>简体中文</el-dropdown-item>
+                  <el-dropdown-item>English</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+            <!-- 个人信息（退出） -->
+            <el-dropdown>
+              <div class="flex items-center space-x-2">
+                <el-avatar
+                  src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+                  alt="avatar"
+                  :size="25" 
+                  width="25" 
+                  height="25"
+                />
+                <p>{{ user.name }}</p>
+              </div>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item>个人信息</el-dropdown-item>
+                  <el-dropdown-item>修改密码</el-dropdown-item>
+                  <el-dropdown-item @click="quit">退出登录</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
         </div>
       </el-header>
 

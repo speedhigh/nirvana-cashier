@@ -35,8 +35,7 @@ export default function barChartOptions(xData, yData) {
         },
         label: {
           show: true,
-          position: 'top',
-          valueAnimation: true
+          position: 'top'
         }
       }
     ]
