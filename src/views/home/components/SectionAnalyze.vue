@@ -19,7 +19,7 @@
           <div class="tag" /><h3>{{$t(`message.totalVolume`)}}</h3>
         </div>
         <div v-loading="numCharts.loading" class="chart-box">
-          <base-chart :options="numCharts.options" />
+          <base-chart id="numCharts" :options="numCharts.options" />
         </div>
       </div>
       <!-- 总成交额 -->
@@ -28,7 +28,7 @@
           <div class="tag" /><h3>{{$t(`message.totalTurnover`)}}</h3>
         </div>
         <div v-loading="sumCharts.loading" class="chart-box">
-          <base-chart :options="sumCharts.options" />
+          <base-chart id="sumCharts" :options="sumCharts.options" />
         </div>
       </div>
       <!-- 总收益 -->
@@ -37,7 +37,7 @@
           <div class="tag" /><h3>{{$t(`message.totalRevenue`)}}</h3>
         </div>
         <div v-loading="expendCharts.loading" class="chart-box">
-          <base-chart :options="expendCharts.options" />
+          <base-chart id="expendCharts" :options="expendCharts.options" />
         </div>
       </div>
     </div>

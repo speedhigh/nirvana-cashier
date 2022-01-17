@@ -40,7 +40,7 @@
             <div class="tag" /><h3>年度</h3>
           </div>
           <div v-loading="niandudtos.loading" class="chart-box">
-            <base-chart :options="niandudtos.options" />
+            <base-chart id="niandudtos" :options="niandudtos.options" />
           </div>
         </div>
 
@@ -50,7 +50,7 @@
             <div class="tag" /><h3>季度</h3>
           </div>
           <div v-loading="jidudtos.loading" class="chart-box">
-            <base-chart :options="jidudtos.options" />
+            <base-chart id="jidudtos" :options="jidudtos.options" />
           </div>
         </div>
 
@@ -60,7 +60,7 @@
             <div class="tag" /><h3>月度</h3>
           </div>
           <div v-loading="yuedudtos.loading" class="chart-box">
-            <base-chart :options="yuedudtos.options" />
+            <base-chart id="yuedudtos" :options="yuedudtos.options" />
           </div>
         </div>
       </div>

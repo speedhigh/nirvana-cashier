@@ -1,5 +1,5 @@
 <template>
-  <div v-resize="resize" ref="container" class="w-full h-full" />
+  <div v-resize="resize" :id="id" class="w-full h-full" />
 </template>
 
 <script>
@@ -7,6 +7,10 @@ import { onMounted, ref, watch } from 'vue'
 import * as echarts from 'echarts'
 export default {
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     options: {
       required: true,
       type: Object,
@@ -14,23 +18,21 @@ export default {
     }
   },
   setup(props) {
-    const container = ref(null)
+    let i = 0
     const chart = ref(null)
+    let myChart
     onMounted(() => {
-      chart.value = echarts.init(container.value)
-      window.onresize = function() {
-        chart.value.resize()
-      }
-      chart.value.setOption(props.options)
+      myChart = echarts.init(document.getElementById(props.id))
+      myChart.setOption(props.options)
     })
     watch(() => props.options, (newOptions) => {
-      chart.value.setOption(newOptions)
+      myChart.setOption(newOptions)
     }, { deep: true })
     return {
-      container,
       chart,
       resize() {
-        chart.value.resize()
+        i ? myChart.resize() : setTimeout(() => { myChart.resize() }, 800 )
+        i += 1
       }
     }
   }

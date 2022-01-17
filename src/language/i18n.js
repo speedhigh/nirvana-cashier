@@ -9,6 +9,8 @@ const i18n = createI18n({
   legacy: false, // you must specify 'legacy: false' option
   locale: language.split("-")[0] || "zh",
   messages,
+  fallbackWarn: false,
+  missingWarn: false
 });
 
 export default i18n
