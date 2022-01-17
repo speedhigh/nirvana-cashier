@@ -67,8 +67,8 @@
     </section>
     <!-- 表格数据 -->
     <section>
+      <!--
       <div class="flex items-center">
-        <!-- 选择日期区间 -->
         <el-date-picker
           type="daterange"
           range-separator="—"
@@ -76,13 +76,13 @@
           end-placeholder="结束日期"
           class="mt-2.5"
         />
-        <!-- 搜索 -->
         <el-input
           class="w-64 ml-auto"
           placeholder="搜索"
           :suffix-icon="Search"
         />
       </div>
+      -->
       <div v-if="salaries.length > 0" class="mt-4">
         <el-table :data="salaries" border style="width: 100%">
           <el-table-column prop="xiadanshijian" label="下单时间" width="240" />

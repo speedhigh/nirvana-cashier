@@ -3,9 +3,8 @@
     class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm"
     v-loading="showLoading"
   >
-    <!-- top -->
+    <!-- top 
     <div class="flex items-center">
-      <!-- 选择日期区间 -->
       <el-date-picker
         v-model="params.date"
         type="daterange"
@@ -13,7 +12,6 @@
         start-placeholder="开始日期"
         end-placeholder="结束日期"
       />
-      <!-- 选择区域 -->
       <el-select v-model="params.area" placeholder="选择区域" size="large" class="ml-5">
         <el-option
           v-for="item in options"
@@ -23,7 +21,6 @@
         >
         </el-option>
       </el-select>
-      <!-- 搜索 -->
       <el-input
         v-model="params.search"
         class="w-64 ml-auto"
@@ -31,6 +28,7 @@
         :suffix-icon="Search"
       />
     </div>
+    -->
     <!-- table -->
     <div v-if="orderList.length > 0" class="mt-4">
       <el-table :data="orderList" border style="width: 100%">

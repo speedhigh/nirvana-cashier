@@ -1,15 +1,13 @@
 <template>
   <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
-    <!-- top -->
+    <!-- top
     <div class="flex items-center">
-      <!-- 选择日期区间 -->
       <el-date-picker
         type="daterange"
         range-separator="—"
         start-placeholder="开始日期"
         end-placeholder="结束日期"
       />
-      <!-- 选择区域 -->
       <el-select placeholder="选择区域" size="large" class="ml-5">
         <el-option
           v-for="item in options"
@@ -19,17 +17,17 @@
         >
         </el-option>
       </el-select>
-      <!-- 搜索 -->
       <el-input
         class="w-64 ml-auto"
         placeholder="搜索"
         :suffix-icon="Search"
       />
     </div>
+    -->
     <!-- content -->
     <base-pagination
       :params="params"
-      :size="10"
+      :size="12"
       url="/home/getOrdersPage"
       class="mt-5"
     >

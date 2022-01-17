@@ -1,8 +1,7 @@
 <template>
   <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
-    <!-- top -->
+    <!-- top 
     <div class="flex items-center">
-      <!-- 选择区域 -->
       <el-select placeholder="选择区域" size="large">
         <el-option
           v-for="item in options"
@@ -12,18 +11,18 @@
         >
         </el-option>
       </el-select>
-      <!-- 搜索 -->
       <el-input
         class="w-64 ml-auto"
         placeholder="搜索"
         :suffix-icon="Search"
       />
     </div>
+    -->
 
     <!-- table -->
     <base-pagination
       :params="params"
-      :size="10"
+      :size="12"
       url="/home/getGaoJiJingLisPage"
       class="mt-5"
     >
