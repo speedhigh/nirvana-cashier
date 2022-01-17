@@ -4,9 +4,9 @@
       <div>
         <img class="mx-auto h-12 w-auto rounded-2xl" :src="logoImg" alt="Workflow" />
         <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          登录您的账户
+          {{$t(`message.signTitle`)}}
         </h1>
-        <p class="text-center mt-2 text-gray-600">木子网财务后台</p>
+        <p class="text-center mt-2 text-gray-600">{{$t(`message.siginText`)}}</p>
       </div>
       <form class="mt-8 space-y-6">
         <input type="hidden" name="remember" value="true" />
@@ -21,20 +21,20 @@
               autocomplete="phone" 
               required="" 
               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-red-300 focus:border-red-300 focus:z-10 sm:text-sm"
-              placeholder="请输入您的账号" 
+              :placeholder="$t(`message.accountPlaceholder`)" 
             />
           </div>
           <div>
             <label for="password" class="sr-only">密码</label>
             <input
               v-model="form.password"
-              id="password" 
+              id="password"
               name="password" 
               type="password" 
               autocomplete="current-password" 
               required="" 
               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-red-300 focus:border-red-300 focus:z-10 sm:text-sm" 
-              placeholder="请输入您的密码" 
+              :placeholder="$t(`message.passwordPlaceholder`)" 
             />
           </div>
         </div>
@@ -44,7 +44,7 @@
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <LockClosedIcon class="h-5 w-5 text-red-500 group-hover:text-red-400" aria-hidden="true" />
             </span>
-            登录
+            {{$t(`message.signin`)}}
           </button>
         </div>
       </form>
@@ -56,6 +56,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { LockClosedIcon } from '@heroicons/vue/solid'
+import { useI18n } from 'vue-i18n'
 import api from '../../api/index.js'
 import Encrypt from '../../until/crypto.js'
 import { ElMessage } from 'element-plus'
@@ -67,9 +68,10 @@ export default {
   },
   setup() {
     const router = useRouter()
+    const { t } = useI18n()
     const loginDisabled = ref(false)
     const form = reactive({
-      phone: '',
+      phone: localStorage.getItem('account') ? localStorage.getItem('account') : '',
       password: ''
     })
     const login = function() {
@@ -81,7 +83,8 @@ export default {
       api.post('/open/login', postData).then((res) => {
         console.log(res)
         if(res.data.code === 20000) {
-          ElMessage.success('登录成功')
+          localStorage.setItem('account', form.phone)
+          ElMessage.success(t('message.welcome') + ' ' + res.data.data.user.realname + '!')
           sessionStorage.setItem('token', res.data.data.token)
           sessionStorage.setItem('name', res.data.data.user.realname)
           router.push('/')

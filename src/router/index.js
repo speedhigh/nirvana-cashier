@@ -26,7 +26,7 @@ const routes = [
         component:() => import('../views/home/index.vue'),
         meta: {
           name: 'Home',
-          breadcrumb : [{ text: '首页', url: '/home' }]
+          breadcrumb : [{ text: 'message.home', url: '/home' }]
         }
       }
     ]
@@ -45,7 +45,7 @@ const routes = [
         component:() => import('../views/todo/index.vue'),
         meta: {
           name: 'TodoList',
-          breadcrumb : [{ text: '待办信息', url: '/todo/list' }]
+          breadcrumb : [{ text: 'message.todo', url: '/todo/list' }]
         }
       }
     ]
@@ -65,7 +65,7 @@ const routes = [
         component:() => import('../views/data/order/index.vue'),
         meta: {
           name: 'OrderData',
-          breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/order' }, { text: 'message.orderData', url: '/data/order' }]
         }
       },
       // 订单详情
@@ -75,7 +75,7 @@ const routes = [
         component:() => import('../views/data/order/detail.vue'),
         meta: {
           name: 'OrderData',
-          breadcrumb : [{ text: '数据分析', url: '/data/order' }, { text: '订单数据', url: '/data/order' }, { text: '订单详情', url: '/data/order/detail/:id' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/order' }, { text: 'message.orderData', url: '/data/order' }, { text: 'message.orderDetail', url: '/data/order/detail/:id' }]
         }
       },
       // 订单分析
@@ -85,7 +85,7 @@ const routes = [
         component:() => import('../views/data/analyze/index.vue'),
         meta: {
           name: 'OrderAnalyze',
-          breadcrumb : [{ text: '数据分析', url: '/data/analyze/index.vue' }, { text: '订单分析', url: '/data/analyze/index.vue' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/analyze/index.vue' }, { text: 'message.orderAnalysis', url: '/data/analyze/index.vue' }]
         }
       },
       // 大客户数据
@@ -95,7 +95,7 @@ const routes = [
         component:() => import('../views/data/cnewb/index.vue'),
         meta: {
           name: 'CnewbData',
-          breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/cnewb' }, { text: 'message.customerData', url: '/data/cnewb' }]
         }
       },
       // 大客户数据详情
@@ -105,7 +105,7 @@ const routes = [
         component:() => import('../views/data/cnewb/detail.vue'),
         meta: {
           name: 'CnewbData',
-          breadcrumb : [{ text: '数据分析', url: '/data/cnewb' }, { text: '大客户数据', url: '/data/cnewb' }, { text: '大客户数据详情', url: '/data/cnewb/detail/:id' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/cnewb' }, { text: 'message.customerData', url: '/data/cnewb' }, { text: 'message.customerDetail', url: '/data/cnewb/detail/:id' }]
         }
       },
       // 高级经理数据
@@ -115,7 +115,7 @@ const routes = [
         component:() => import('../views/data/newb/index.vue'),
         meta: {
           name: 'NewbData',
-          breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据', url: '/data/newb' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/newb' }, { text: 'message.managerData', url: '/data/newb' }]
         }
       },
       // 高级经理数据详情
@@ -125,7 +125,7 @@ const routes = [
         component:() => import('../views/data/newb/detail.vue'),
         meta: {
           name: 'NewbData',
-          breadcrumb : [{ text: '数据分析', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb' }, { text: '高级经理数据详情', url: '/data/newb/detail/:id' }]
+          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/newb' }, { text: 'message.managerData', url: '/data/newb' }, { text: 'message.managerDetail', url: '/data/newb/detail/:id' }]
         }
       },
     ]
@@ -144,7 +144,7 @@ const routes = [
         component:() => import('../views/withdraw/index.vue'),
         meta: {
           name: 'Withdraw',
-          breadcrumb : [{ text: '提现管理', url: '/withdraw/list' }]
+          breadcrumb : [{ text: 'message.withdrawals', url: '/withdraw/list' }]
         }
       }
     ]

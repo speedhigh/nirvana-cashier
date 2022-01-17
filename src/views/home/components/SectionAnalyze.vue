@@ -4,7 +4,7 @@
     v-if="numCharts.show || sumCharts.show || expendCharts.show" 
     class="col-span-2 box-child"
   >
-    <h2 class="font-bold text-lg">订单分析</h2>
+    <h2 class="font-bold text-lg">{{$t(`message.orderAnalysis`)}}</h2>
     <!-- <el-date-picker
       type="daterange"
       range-separator="—"
@@ -12,11 +12,11 @@
       end-placeholder="结束日期"
       class="mt-2.5"
     /> -->
-    <div class="mt-5 grid grid-cols-3 gap-x-6">
+    <div class="mt-5 grid grid-cols-3 gap-x-5">
       <!-- 总成交量 -->
       <div v-if="numCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
-          <div class="tag" /><h3>总成交量</h3>
+          <div class="tag" /><h3>{{$t(`message.totalVolume`)}}</h3>
         </div>
         <div v-loading="numCharts.loading" class="chart-box">
           <base-chart :options="numCharts.options" />
@@ -25,7 +25,7 @@
       <!-- 总成交额 -->
       <div v-if="sumCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
-          <div class="tag" /><h3>总成交额</h3>
+          <div class="tag" /><h3>{{$t(`message.totalTurnover`)}}</h3>
         </div>
         <div v-loading="sumCharts.loading" class="chart-box">
           <base-chart :options="sumCharts.options" />
@@ -34,7 +34,7 @@
       <!-- 总收益 -->
       <div v-if="expendCharts.show" class="w-full">
         <div class="flex items-center space-x-2">
-          <div class="tag" /><h3>总收益</h3>
+          <div class="tag" /><h3>{{$t(`message.totalRevenue`)}}</h3>
         </div>
         <div v-loading="expendCharts.loading" class="chart-box">
           <base-chart :options="expendCharts.options" />
@@ -57,7 +57,6 @@ export default {
     ChartLine
   },
   setup() {
-
     // 总成交量
     const numCharts = reactive({
       show: false,

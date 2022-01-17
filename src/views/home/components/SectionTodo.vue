@@ -2,13 +2,13 @@
   <section>
     <!-- title -->
     <div class="flex items-center">
-      <h2>待办信息</h2>
+      <h2>{{$t(`message.todo`)}}</h2>
       <router-link 
         v-show="todos.list.length > 0"
         to="/todo/list" 
         class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800"
       >
-        查看更多 >
+        {{$t(`message.more`)}} >
       </router-link>
     </div>
     <!-- content -->
@@ -18,8 +18,8 @@
       class="mt-2.5"
     >
       <div 
-        v-for="(item, index) in todos.list" 
-        :key="index" 
+        v-for="item in todos.list" 
+        :key="item.id" 
         class="flex items-center cursor-pointer pr-2 hover:font-bold active:font-normal"
         @click="handle(item.id)"
       >
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <el-empty v-if="todos.list.length === 0 && !todos.loading" description=" " class="mt-6 text-sm text-gray-500">暂无信息</el-empty>
+    <el-empty v-if="todos.list.length === 0 && !todos.loading" description=" " class="mt-6 text-sm text-gray-500">{{$t(`message.noInfo`)}} </el-empty>
   </section>
 </template>
 

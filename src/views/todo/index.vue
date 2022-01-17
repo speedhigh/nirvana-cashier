@@ -1,6 +1,6 @@
 <template>
   <div class="w-[80%] h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
-    <h2>待办信息</h2>
+    <h2>{{$t(`message.todo`)}}</h2>
     <base-pagination
       ref="paginationRef"
       :params="params"
@@ -9,8 +9,8 @@
     >
       <template #default="slotProps">
         <div 
-          v-for="(item, index) in slotProps.list" 
-          :key="index"
+          v-for="item in slotProps.list" 
+          :key="item.id"
           class="flex items-center hover:font-bold cursor-pointer text-left"
           @click="handle(item.id)"
         >

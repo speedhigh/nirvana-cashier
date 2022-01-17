@@ -6,6 +6,7 @@ import './index.css'
 import 'default-passive-events'
 import App from './App.vue'
 import router from './router'
+import VueI18n from './language/i18n.js'
 
 const app = createApp(App)
 
@@ -40,6 +41,7 @@ app.directive('resize', {
   }
 })
 
-app.use(ElementPlus, { locale: zhCn })
+app.use(ElementPlus, { locale: window.localStorage.getItem('language') ? window.localStorage.getItem('language') === 'zh' ? zhCn : '' : zhCn })
+app.use(VueI18n)
 app.use(router)
 app.mount('#app')

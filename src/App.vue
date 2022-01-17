@@ -3,6 +3,8 @@
     <router-view></router-view>
   </div>
 </template>
+
+
 <style>
 input, button, select, textarea {
   outline: none !important

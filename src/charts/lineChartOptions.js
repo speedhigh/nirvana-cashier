@@ -15,7 +15,7 @@ export default function barChartOptions(xData, yData) {
     },
     grid:{
       top:30,
-      left:45,// 调整这个属性
+      left:55,// 调整这个属性
       right:30,
       bottom:30,
     },

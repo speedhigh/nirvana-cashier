@@ -2,7 +2,7 @@
   <main class="space-y-4">
     <!-- 大客户资料(info) -->
     <section>
-      <h2>大客户资料</h2>
+      <h2>{{$t(`message.customerProfile`)}}</h2>
       <div class="mt-6 flex space-x-6">
         <el-avatar
           src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" 
@@ -15,16 +15,16 @@
         <div class="mt-1 flex-grow space-y-4">
           <p class="text-2xl">{{ info.yonghuming }}</p>
           <div class="flex items-center space-x-14 text-gray-700">
-            <p>用户ID：{{ info.id }}</p>
-            <p>联系方式：{{ info.lianxifangshi }}</p>
-            <p>下级数量：{{ info.xiajishuliang }}</p>
-            <p>注册时间：{{ info.zhuceriqi }}</p>
-            <p>到期时间：{{ info.endriqi }}</p>
+            <p>{{$t(`message.userId`)}}：{{ info.id }}</p>
+            <p>{{$t(`message.phone`)}}：{{ info.lianxifangshi }}</p>
+            <p>{{$t(`message.subNum`)}}：{{ info.xiajishuliang }}</p>
+            <p>{{$t(`message.regisiterTime`)}}：{{ info.zhuceriqi }}</p>
+            <p>{{$t(`message.expiryTime`)}}：{{ info.endriqi }}</p>
           </div>
           <div class="flex items-center space-x-14 text-gray-700">
-            <p>累计订单数量：{{ info.leijidingdanshuliang }}</p>
-            <p>累计订单金额：{{ info.leijidingdanjine }}</p>
-            <p>累计订单收益：{{ info.leijidingdanshouyi }}</p>
+            <p>{{$t(`message.orderNum`)}}：{{ info.leijidingdanshuliang }}</p>
+            <p>{{$t(`message.orderAmount`)}}：{{ info.leijidingdanjine }}</p>
+            <p>{{$t(`message.orderRevenue`)}}：{{ info.leijidingdanshouyi }}</p>
           </div>
         </div>
       </div>

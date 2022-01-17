@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
+  <div 
+    class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm"
+    v-loading="showLoading"
+  >
     <!-- top -->
     <div class="flex items-center">
       <!-- 选择日期区间 -->
@@ -48,7 +51,7 @@
         <el-table-column prop="shouyi" label="收益（元）" />
       </el-table>
     </div>
-    <el-empty v-else description=" " :image-size="200" class="text-gray-500 mt-40">暂无数据</el-empty>
+    <el-empty v-show="!showLoading && orderList.length === 0" description=" " :image-size="200" class="text-gray-500 mt-40">暂无数据</el-empty>
   </div>
 </template>
 
@@ -60,6 +63,7 @@ import { Search } from '@element-plus/icons-vue'
 export default {
   setup() {
     const route = useRoute()
+    const showLoading = ref(true)
     const params = reactive({
       date: '',
       area: '',
@@ -74,12 +78,14 @@ export default {
 
     api.get('/home/getOrderById', { id: route.params.id }).then((res) => {
       orderList.value = res.data.data
+      showLoading.value = false
     })
 
     // 获取数据
     
     return {
       Search,
+      showLoading,
       params,
       options,
       orderList

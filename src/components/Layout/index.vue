@@ -17,7 +17,7 @@
         router
       >
         <div 
-          class="h-[3.75rem] py-4 z-50 relative" 
+          class="h-[3.75rem] py-4 z-50 relative"
           :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'"
         >
           <router-link to="/" class="flex items-center space-x-2 cursor-pointer">
@@ -36,7 +36,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          <span>首页</span>
+          <span>{{$t(`message.home`)}}</span>
         </el-menu-item>
 
         <!-- 待办信息 -->
@@ -44,7 +44,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>待办信息</span>
+          <span>{{$t(`message.todo`)}}</span>
         </el-menu-item>
 
         <!-- 数据分析 -->
@@ -53,12 +53,16 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
             </svg>
-            <span class="ml-2">数据分析</span>
+            <span class="ml-2">{{$t(`message.dataAnalysis`)}}</span>
           </template>
-          <el-menu-item index="OrderData" :route="{path: '/data/order'}" class="bg-gray-50">订单数据</el-menu-item>
-          <!-- <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">订单分析</el-menu-item> -->
-          <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}" class="bg-gray-50">大客户数据</el-menu-item>
-          <el-menu-item index="NewbData" :route="{path: '/data/newb'}" class="bg-gray-50">高级经理数据</el-menu-item>
+          <!-- 订单数据 -->
+          <el-menu-item index="OrderData" :route="{path: '/data/order'}" class="bg-gray-50">{{$t(`message.orderData`)}}</el-menu-item>
+          <!-- 订单分析 -->
+          <!-- <el-menu-item index="OrderAnalyze" :route="{path: '/data/analyze'}">{{$t(`message.orderAnalysis`)}}</el-menu-item> -->
+          <!-- 大客户数据 -->
+          <el-menu-item index="CnewbData" :route="{path: '/data/cnewb'}" class="bg-gray-50">{{$t(`message.customerData`)}}</el-menu-item>
+          <!-- 高级经理数据 -->
+          <el-menu-item index="NewbData" :route="{path: '/data/newb'}" class="bg-gray-50">{{$t(`message.managerData`)}}</el-menu-item>
         </el-sub-menu>
 
         <!-- 提现管理 -->
@@ -66,7 +70,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
           </svg>
-          <span>提现管理</span>
+          <span>{{$t(`message.withdrawals`)}}</span>
         </el-menu-item>
       </el-menu>
 
@@ -74,7 +78,7 @@
         class="fixed bottom-0 pt-3" 
         :class="isCollapse ? 'px-3.5 w-[65px] py-4' : 'px-6 mb-4 w-[208px] border-t border-gray-300 flex space-x-3'"
       >
-        <el-avatar :size="40" width="40" height="40" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="avatar" />
+        <el-avatar :size="40" width="40" height="40" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="avatar" class="w-10 h-10" />
         <div v-show="!isCollapse" class="space-y-0.5">
           <p class="text-sm">{{ user.name }}</p>
           <p class="text-xs text-gray-600">财务-出纳</p>
@@ -97,7 +101,7 @@
             <el-tooltip
               class="cursor-pointer"
               effect="dark"
-              :content="fullscreen ? '退出全屏' : '全屏'"
+              :content="fullscreen ? $t(`message.exitPreview`) : $t(`message.preview`)"
               placement="bottom"
             >
               <div v-if="!fullscreen" @click="handleFullScreen">
@@ -109,13 +113,16 @@
             </el-tooltip>
             <!-- 翻译 -->
             <el-dropdown>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-              </svg>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+              </div>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>简体中文</el-dropdown-item>
-                  <el-dropdown-item>English</el-dropdown-item>
+                  <el-dropdown-item @click="change('zh')">简体中文</el-dropdown-item>
+                  <el-dropdown-item @click="change('en')">English</el-dropdown-item>
+                  <el-dropdown-item @click="change('jp')">日本語</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -125,17 +132,18 @@
                 <el-avatar
                   src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
                   alt="avatar"
-                  :size="25" 
-                  width="25" 
-                  height="25"
+                  :size="28" 
+                  width="28" 
+                  height="28"
+                  class="w-7 h-7"
                 />
                 <p>{{ user.name }}</p>
               </div>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>个人信息</el-dropdown-item>
-                  <el-dropdown-item>修改密码</el-dropdown-item>
-                  <el-dropdown-item @click="quit">退出登录</el-dropdown-item>
+                  <el-dropdown-item :icon="User">{{$t(`message.info`)}}</el-dropdown-item>
+                  <el-dropdown-item :icon="Lock">{{$t(`message.changePwd`)}}</el-dropdown-item>
+                  <el-dropdown-item :icon="SwitchButton" @click="quit">{{$t(`message.signout`)}}</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -145,16 +153,16 @@
 
       <!-- 面包屑 -->
       <div class="w-full h-12 bg-white flex items-center px-6 border-b border-gray-200">
-        <div 
+        <div
           v-for="(item, index) in $route.meta.breadcrumb" 
           :key="index"
           class="flex items-center"
         >
           <div 
-            :class="$route.meta.breadcrumb.length - index === 1 ? 'text-red-700 cursor-default font-bold' : 'cursor-pointer'"
+            :class="$route.meta.breadcrumb.length - index === 1 ? 'text-red-700 cursor-default font-bold' : index > 0 ? 'cursor-pointer hover:text-red-700' : 'cursor-default'"
             @click="jump(item.url, item.text)"
           >
-            {{ item.text }}
+            {{ $t(item.text) }}
           </div>
           <div v-if="index < $route.meta.breadcrumb.length - 1" class="mx-2">></div>
         </div>
@@ -170,9 +178,11 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from 'vue'
+import { reactive, ref, toRefs, getCurrentInstance } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { User, Lock, SwitchButton } from '@element-plus/icons-vue'
 import { changeFullScreen, listenerEvent } from '../../until/fullScreen.js'
 import LogoImg from '/src/assets/logo.png'
 export default {
@@ -192,27 +202,43 @@ export default {
     // 全屏切换
     const handleFullScreen = () => changeFullScreen(data)
     const params = toRefs(data)
+
+    // 国际化
+    const { proxy } = getCurrentInstance()
+    function change(type) {
+      if(type === 'zh') ElMessage.success('切换成功!') 
+      if(type === 'en') ElMessage.success('success!')
+      if(localStorage.getItem('language') !== type) {
+        localStorage.setItem('language',type)
+        proxy.$i18n.locale = type
+        location.reload()
+      }
+    }
+    const { t } = useI18n()
     return {
+      t,
+      User,Lock,SwitchButton,
       LogoImg,
       path,
       isCollapse,
       user,
       ...params,
+      change,
       handleFullScreen,
       jump(url, text) {
         if(url) router.push({ path: url })
       },
       quit() {
-        ElMessageBox.confirm( '确定要退出登录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        ElMessageBox.confirm( t('message.exitDialog'), t('message.prompt'), {
+          confirmButtonText: t('message.confirm'),
+          cancelButtonText: t('message.cancel'),
           type: 'info',
           showClose: false
         })
         .then(() => {
           sessionStorage.removeItem('token')
           router.replace('/login')
-          ElMessage.success('已退出登录')
+          ElMessage.success(t('message.signedOut'))
         }).catch(() => {
           // 取消通过审批
         })
