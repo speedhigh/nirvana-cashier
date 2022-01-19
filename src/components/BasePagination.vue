@@ -52,7 +52,6 @@ export default {
       let newParams = {}
       Object.assign(newParams, props.params, { current: currentPage.value, size: props.size })
       api.get(props.url, pickBy(newParams)).then((res) => {
-        console.log(res)
         if(res.data.code === 20000) {
           total.value = res.data.data.total
           localList.value = res.data.data.records

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import './index.css'
 import 'default-passive-events'
 import App from './App.vue'
@@ -41,7 +41,8 @@ app.directive('resize', {
   }
 })
 
-app.use(ElementPlus, { locale: window.localStorage.getItem('language') ? window.localStorage.getItem('language') === 'zh' ? zhCn : '' : zhCn })
+// app.use(ElementPlus, { locale: window.localStorage.getItem('language') ? window.localStorage.getItem('language') === 'zh' ? zhCn : '' : zhCn })
+app.use(ElementPlus)
 app.use(VueI18n)
 app.use(router)
 app.mount('#app')

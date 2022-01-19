@@ -14,14 +14,14 @@
           :row-class-name="tableRowClassName"
           class="cursor-pointer"
         >
-          <el-table-column prop="shijian" label="时间" width="200" />
-          <el-table-column prop="shenqingren" label="申请大客户" width="130" />
-          <el-table-column prop="shenqingjine" label="申请金额" width="140" />
-          <el-table-column prop="profit" label="打款金额" width="140" />
-          <el-table-column prop="shenpiren" label="审核人" width="120" />
+          <el-table-column prop="shijian" label="时间" min-width="200" />
+          <el-table-column prop="shenqingren" label="申请大客户" min-width="130" />
+          <el-table-column prop="shenqingjine" label="申请金额" min-width="140" />
+          <el-table-column prop="profit" label="打款金额" min-width="140" />
+          <el-table-column prop="shenpiren" label="审核人" min-width="120" />
           <el-table-column prop="beizhu" label="备注" />
-          <el-table-column prop="zhuangtai" label="状态" width="100" align="center" />
-          <el-table-column label="操作" width="90">
+          <el-table-column prop="zhuangtai" label="状态" min-width="100" align="center" />
+          <el-table-column label="操作" min-width="90">
             <template #default="scope">
               <button
                 v-if="scope.row.zhuangtai === '待处理'" 

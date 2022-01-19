@@ -84,12 +84,12 @@
       </div>
       -->
       <div v-if="salaries.length > 0" class="mt-4">
-        <el-table :data="salaries" border style="width: 100%">
-          <el-table-column prop="xiadanshijian" label="下单时间" width="240" />
-          <el-table-column prop="shangjiid" label="上级id" width="180" />
-          <el-table-column prop="" label="子订单数量" width="150" />
-          <el-table-column prop="dingdanjine" label="订单金额(元)" width="450" />
-          <el-table-column prop="dingdanshouyi" label="订单收益(元)" width="450" />
+        <el-table :data="salaries" border stripe style="width: 100%">
+          <el-table-column prop="xiadanshijian" label="下单时间" min-width="240" />
+          <el-table-column prop="shangjiid" label="上级id" min-width="180" />
+          <el-table-column prop="" label="子订单数量" min-width="150" />
+          <el-table-column prop="dingdanjine" label="订单金额(元)" min-width="450" />
+          <el-table-column prop="dingdanshouyi" label="订单收益(元)" min-width="450" />
           <el-table-column label="操作">
             <template #default="scope">
               <p class="text-red-700 underline cursor-pointer" @click="handleEdit(scope.$index, scope.row)">查看信息</p>
@@ -145,7 +145,6 @@ export default {
 
 
     api.get('/home/getGaoJiJingLiById', { id: route.params.id }).then((res) => {
-      console.log(res)
       // info（个人资料）
       info.value = res.data.data.info
 

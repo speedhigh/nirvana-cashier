@@ -120,9 +120,9 @@
               </div>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item @click="change('zh')">简体中文</el-dropdown-item>
-                  <el-dropdown-item @click="change('en')">English</el-dropdown-item>
-                  <el-dropdown-item @click="change('jp')">日本語</el-dropdown-item>
+                  <el-dropdown-item @click="change('zhCn')">简体中文</el-dropdown-item>
+                  <el-dropdown-item @click="change('En')">English</el-dropdown-item>
+                  <el-dropdown-item @click="change('Ja')">日本語</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -170,7 +170,9 @@
 
       <!-- 主体 -->
       <el-main class="bg-gray-100">
-        <router-view></router-view>
+        <el-config-provider :locale="locale">
+          <router-view></router-view>
+        </el-config-provider>
       </el-main>
 
     </el-container>
@@ -180,6 +182,9 @@
 <script>
 import { reactive, ref, toRefs, getCurrentInstance } from 'vue'
 import { useI18n } from 'vue-i18n'
+import zhCn from "element-plus/lib/locale/lang/zh-cn"
+import En from 'element-plus/lib/locale/lang/en'
+import Ja from 'element-plus/lib/locale/lang/ja'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { User, Lock, SwitchButton } from '@element-plus/icons-vue'
@@ -204,19 +209,21 @@ export default {
     const params = toRefs(data)
 
     // 国际化
+    let locale = ref(zhCn)
     const { proxy } = getCurrentInstance()
     function change(type) {
-      if(type === 'zh') ElMessage.success('切换成功!') 
-      if(type === 'en') ElMessage.success('success!')
+      if(type === 'zhCn') { ElMessage.success('切换成功!'); locale.value = zhCn }
+      if(type === 'En') { ElMessage.success('success!'); locale.value = En }
+      if(type === 'Ja') { ElMessage.success('スイッチングに成功!'); locale.value = Ja }
       if(localStorage.getItem('language') !== type) {
         localStorage.setItem('language',type)
         proxy.$i18n.locale = type
-        location.reload()
       }
     }
     const { t } = useI18n()
     return {
       t,
+      locale,
       User,Lock,SwitchButton,
       LogoImg,
       path,

@@ -1,9 +1,9 @@
-import en from './en'
-import ch from './zh'
-import jp from './jp'
+import En from './en'
+import zhCn from './zh'
+import Ja from './ja'
 
 export default {
-  en,
-  ch,
-  jp
+  En,
+  zhCn,
+  Ja
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-login-bg-a bg-cover bg-no-repeat">
-    <div class="max-w-md w-full space-y-8 p-12 rounded-md shadow-lg backdrop-blur-xl bg-[rgba(255,255,255,0.6)]">
+    <div class="max-w-[410px] w-full space-y-8 p-12 rounded-xl shadow-lg backdrop-blur-xl bg-[rgba(255,255,255,0.6)]">
       <div>
         <img class="mx-auto h-12 w-auto rounded-2xl" :src="logoImg" alt="Workflow" />
         <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -81,7 +81,6 @@ export default {
       postData = Object.assign(postData, form)
       postData.password = Encrypt.Encrypt(postData.password)
       api.post('/open/login', postData).then((res) => {
-        console.log(res)
         if(res.data.code === 20000) {
           localStorage.setItem('account', form.phone)
           ElMessage.success(t('message.welcome') + ' ' + res.data.data.user.realname + '!')

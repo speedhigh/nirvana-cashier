@@ -147,7 +147,6 @@ export default {
       if(state) {
         // 获取信息
         api.get('/home/getTiXianById', { id: props.id }).then((res) => {
-          console.log(res.data.data)
           info = Object.assign(info, res.data.data)
         })
       }

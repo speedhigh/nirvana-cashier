@@ -15,14 +15,14 @@
       v-if="order.list.length > 0" 
       :data="order.list" 
       v-loading="order.loading" 
-      border 
+      stripe
       class="mt-4"
     >
-      <el-table-column prop="xiadanshijian" label="时间" width="170" />
-      <el-table-column prop="gaojijingliid" label="高级经理 ID" width="120" />
-      <el-table-column prop="gaojijingliyonghuming" label="高级经理用户名" width="120" />
-      <el-table-column prop="dingdanjine" label="成交额（元）" width="120" />
-      <el-table-column prop="dingdanshouyi" label="收益额（元）" width="120" />
+      <el-table-column prop="xiadanshijian" label="时间" min-width="170" />
+      <el-table-column prop="gaojijingliid" label="高级经理 ID" min-width="120" />
+      <el-table-column prop="gaojijingliyonghuming" label="高级经理用户名" min-width="120" />
+      <el-table-column prop="dingdanjine" label="成交额（元）" min-width="120" />
+      <el-table-column prop="dingdanshouyi" label="收益额（元）" min-width="120" />
       <el-table-column prop="shangjiid" label="上级 ID" />
     </el-table>
     <el-empty v-if="!order.loading && order.list.length === 0" description=" " class="mt-6 text-gray-500">{{ $t(`message.noOrder`) }}</el-empty>
