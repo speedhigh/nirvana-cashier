@@ -18,10 +18,10 @@
               id="phone" 
               name="phone" 
               type="tel"
-              autocomplete="phone" 
+              autocomplete="phone"
               required="" 
               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-red-300 focus:border-red-300 focus:z-10 sm:text-sm"
-              :placeholder="$t(`message.accountPlaceholder`)" 
+              :placeholder="$t(`message.accountPlaceholder`)"
             />
           </div>
           <div>
@@ -30,11 +30,11 @@
               v-model="form.password"
               id="password"
               name="password" 
-              type="password" 
-              autocomplete="current-password" 
+              type="password"
+              autocomplete="current-password"
               required="" 
               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-red-300 focus:border-red-300 focus:z-10 sm:text-sm" 
-              :placeholder="$t(`message.passwordPlaceholder`)" 
+              :placeholder="$t(`message.passwordPlaceholder`)"
             />
           </div>
         </div>
@@ -86,6 +86,7 @@ export default {
           ElMessage.success(t('message.welcome') + ' ' + res.data.data.user.realname + '!')
           sessionStorage.setItem('token', res.data.data.token)
           sessionStorage.setItem('name', res.data.data.user.realname)
+          sessionStorage.setItem('usergroup', res.data.data.user.usergroup)
           router.push('/')
         } else {
           ElMessage.error(res.data.msg)

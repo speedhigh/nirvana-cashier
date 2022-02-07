@@ -46,6 +46,9 @@ export default {
     expiryTime: '到期时间',
     orderNum: '累计订单数量',
     orderAmount: '累计订单金额',
-    orderRevenue: '累计订单收益'
+    orderRevenue: '累计订单收益',
+    financial: '财务',
+    auditor: '审核',
+    cashier: '出纳'
   }
 }

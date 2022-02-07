@@ -46,6 +46,9 @@ export default {
     expiryTime: 'Expiration time',
     orderNum: 'Cumulative number of orders',
     orderAmount: 'Cumulative order amount',
-    orderRevenue: 'Accumulated order revenue'
+    orderRevenue: 'Accumulated order revenue',
+    financial: 'Financial',
+    auditor: 'Auditor',
+    cashier: 'Cashier'
   }
 }

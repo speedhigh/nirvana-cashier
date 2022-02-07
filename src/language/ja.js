@@ -46,6 +46,9 @@ export default {
     expiryTime: '有効期限',
     orderNum: '累積受注件数',
     orderAmount: '累積受注額',
-    orderRevenue: '累積受注高'
+    orderRevenue: '累積受注高',
+    financial: '財政',
+    auditor: '監査人',
+    cashier: 'キャッシャー'
   }
 }

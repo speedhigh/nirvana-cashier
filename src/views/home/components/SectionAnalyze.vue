@@ -1,7 +1,7 @@
 <template>
   <!-- 订单分析 -->
   <section 
-    v-if="numCharts.show || sumCharts.show || expendCharts.show" 
+    v-if="numCharts.show || sumCharts.show || expendCharts.show"
     class="col-span-2 box-child"
   >
     <h2 class="font-bold text-lg">{{$t(`message.orderAnalysis`)}}</h2>

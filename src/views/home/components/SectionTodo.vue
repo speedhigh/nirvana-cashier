@@ -12,12 +12,12 @@
       </router-link>
     </div>
     <!-- content -->
-    <div 
+    <div
       v-if="todos.list.length > 0" 
       v-loading="todos.loading" 
       class="mt-2.5"
     >
-      <div 
+      <div
         v-for="item in todos.list" 
         :key="item.id" 
         class="flex items-center cursor-pointer pr-2 hover:font-bold active:font-normal"
