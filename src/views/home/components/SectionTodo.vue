@@ -21,7 +21,7 @@
         v-for="item in todos.list" 
         :key="item.id" 
         class="flex items-center cursor-pointer pr-2 hover:font-bold active:font-normal"
-        @click="handle(item.id)"
+        @click="handle(item.id, item.shenfen)"
       >
         <div class=" flex-shrink-0 pt-5 pb-3.5 mr-2">
           <div class="w-2 h-2 rounded-full bg-gray-400" />
@@ -62,8 +62,8 @@ export default {
       SectionTodoMitt,
       todos,
       getTodoList,
-      handle(id) {
-        emit('handle', id)
+      handle(id, shenfen) {
+        emit('handle', id, shenfen)
       }
     }
   }

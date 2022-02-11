@@ -77,8 +77,8 @@
         <div class="w-full rounded-md border-2 border-dashed border-gray-400 p-5 bg-gray-100">
           <textarea 
             v-model="info.beizhu" 
-            :placeholder="info.zhuangtai === '待审批' ? '若未通过申请，请输入备注' : '没有备注'"
-            :disabled="info.zhuangtai === '待审批' ? false : true"
+            :placeholder="info.zhuangtai === '待审核' || info.zhuangtai === '已审核待提现' ? '若未通过申请，请输入备注' : '没有备注'"
+            :disabled="info.zhuangtai === '待审核' || info.zhuangtai === '已审核待提现' ? false : true"
             class="w-full h-20 overflow-hidden bg-gray-100 text-sm"
             style="resize:none"
           >
@@ -89,7 +89,7 @@
 
       <!-- button -->
       <div 
-        v-if="info.zhuangtai === '待审批'" 
+        v-if="info.zhuangtai === '待审核' && info.caiwushenfen === '财务专员（审核）' || info.zhuangtai === '已审核待提现' && info.caiwushenfen === '财务出纳（提现）'" 
         class="pt-3 flex items-center justify-center space-x-5 bg-white"
       >
         <button 
@@ -119,6 +119,10 @@ export default {
       type: String,
       required: true
     },
+    shenfen: {
+      type: String,
+      required: true
+    },
     show: {
       type: Boolean,
       required: true
@@ -126,7 +130,6 @@ export default {
   },
   emits: ['close', 'change'],
   setup(props, { emit }) {
-
     const dialog = reactive({
       show: false
     })
@@ -139,14 +142,15 @@ export default {
       shenqingjine: '',
       shenqingren: '',
       shijian: '',
-      zhuangtai: "待审批",
+      zhuangtai: "待审核",
     })
 
     watch(() => props.show, (state) => {
       dialog.show = state
       if(state) {
         // 获取信息
-        api.get('/home/getTiXianById', { id: props.id }).then((res) => {
+        api.get('/home/getTiXianById', { id: props.id, shenfen: props.shenfen }).then((res) => {
+          console.log(res.data.data)
           info = Object.assign(info, res.data.data)
         })
       }
@@ -159,14 +163,15 @@ export default {
       // 未通过
       failed() {
         if(info.beizhu.length === 0) { ElMessage.error('请填写未通过理由'); return }
-        ElMessageBox.confirm( '确定要将该申请状态设置成未通过吗?', '提示', {
+        let title = info.zhuangtai === '待审核' ? '确定要将该申请状态设置成未通过吗?' : '确定要将该申请状态设置成‘已审核提现失败’吗'
+        ElMessageBox.confirm( title, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'info',
           showClose: false
         })
         .then(() => {
-          api.get('/home/getTiXianFAIL', { id: props.id, shenpiren: info.shenpiren, content:info.beizhu }).then((res) => {
+          api.get('/home/getTiXianFAIL', { id: props.id, shenpiren: info.shenpiren, content:info.beizhu, content: info.beizhu, shenfen: props.shenfen }).then((res) => {
             if(res.data.code === 20000) {
               ElMessage.success('已完成审批')
               dialog.show = false
@@ -181,14 +186,14 @@ export default {
       },
       // 通过
       pass() {
-         ElMessageBox.confirm( '确定要通过审核吗?', '提示', {
+         ElMessageBox.confirm( '确定要通过申请吗?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'success',
           showClose: false
         })
         .then(() => {
-          api.get('/home/getTiXianSUCCESS', { shenpiren: info.shenpiren, id: props.id }).then((res) => {
+          api.get('/home/getTiXianSUCCESS', { shenpiren: info.shenpiren, id: props.id, content: info.beizhu, shenfen: props.shenfen }).then((res) => {
             if(res.data.code === 20000) {
               ElMessage.success('已完成审批')
               dialog.show = false

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
+  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow">
     <!-- top
     <div class="flex items-center">
       <el-select placeholder="选择区域" size="large">

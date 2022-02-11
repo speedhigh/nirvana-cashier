@@ -65,6 +65,14 @@
           <el-menu-item index="NewbData" :route="{path: '/data/newb'}" class="bg-gray-50">{{$t(`message.managerData`)}}</el-menu-item>
         </el-sub-menu>
 
+        <!-- 导出订单 -->
+        <el-menu-item index="ExportOrder" class="space-x-2" :route="{path: '/export/order'}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span>{{$t(`message.export`)}}</span>
+        </el-menu-item>
+
         <!-- 提现管理 -->
         <el-menu-item index="Withdraw" class="space-x-2" :route="{path: '/withdraw/list'}">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -152,7 +160,7 @@
       </el-header>
 
       <!-- 面包屑 -->
-      <div class="w-full h-12 bg-white flex items-center px-6 border-b border-gray-200">
+      <div class="w-full h-12 flex-shrink-0 bg-white flex items-center px-6 border-b border-gray-200">
         <div
           v-for="(item, index) in $route.meta.breadcrumb" 
           :key="index"
@@ -174,7 +182,6 @@
           <router-view></router-view>
         </el-config-provider>
       </el-main>
-
     </el-container>
   </el-container>
 </template>

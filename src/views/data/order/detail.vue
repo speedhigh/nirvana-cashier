@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm"
+    class="w-full h-full bg-white rounded-lg py-5 px-6 shadow"
     v-loading="showLoading"
   >
     <!-- top 

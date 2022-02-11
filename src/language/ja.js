@@ -15,6 +15,7 @@ export default {
     customerDetail: 'ビッグ顧客データの詳細',
     managerData: 'キーアカウントデータ',
     managerDetail: 'キーアカウントデータの詳細',
+    export: '輸出注文',
     withdrawals: '現金引き出し管理',
     confirm: '決定事項',
     cancel: 'キャンセル',

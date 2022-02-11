@@ -15,6 +15,7 @@ export default {
     customerDetail: '大客户数据详情',
     managerData: '高级经理数据',
     managerDetail: '高级经理数据详情',
+    export: '导出订单',
     withdrawals: '提现管理',
     confirm: '确定',
     cancel: '取消',

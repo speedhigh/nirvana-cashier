@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%] h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
+  <div class="w-[80%] h-full bg-white rounded-lg py-5 px-6 shadow">
     <el-date-picker
       v-model="dateValue"
       type="daterange"

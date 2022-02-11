@@ -42,16 +42,22 @@ export default {
     }
   },
   setup(props) {
+    console.log(props.params)
     const BasePaginationMitt = mitt()
     BasePaginationMitt.on('refresh',() => { askApi() })
     const loading = ref(true)
     const currentPage = ref(1)
     const localList = ref([])
     const total = ref(0)
-    const askApi = function() {
+    const askApi = function(more = true) {
+      loading.value = true
       let newParams = {}
+      if(!more) {
+        currentPage.value = 1
+      }
       Object.assign(newParams, props.params, { current: currentPage.value, size: props.size })
       api.get(props.url, pickBy(newParams)).then((res) => {
+        console.log('data', res)
         if(res.data.code === 20000) {
           total.value = res.data.data.total
           localList.value = res.data.data.records
@@ -64,9 +70,16 @@ export default {
     }
     askApi()
     watch(props.params, (value) => {
-      askApi()
+      console.log(value)
+      askApi(false)
     }, {
       deep: true
+    })
+    watch(() => props.size, value => {
+      askApi()
+    })
+    watch(() => props.url, value => {
+      askApi()
     })
     return {
       BasePaginationMitt,

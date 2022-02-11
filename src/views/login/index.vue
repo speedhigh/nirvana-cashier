@@ -15,11 +15,11 @@
             <label for="phone" class="sr-only">账号</label>
             <input
               v-model="form.phone"
-              id="phone" 
-              name="phone" 
+              id="phone"
+              name="phone"
               type="tel"
               autocomplete="phone"
-              required="" 
+              required=""
               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-red-300 focus:border-red-300 focus:z-10 sm:text-sm"
               :placeholder="$t(`message.accountPlaceholder`)"
             />

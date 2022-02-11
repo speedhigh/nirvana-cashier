@@ -15,6 +15,7 @@ export default {
     customerDetail: 'Key Account Data Details',
     managerData: 'Senior Manager Data',
     managerDetail: 'Senior Manager Data Details',
+    export: 'Export Order',
     withdrawals: 'Withdrawals',
     confirm: 'Confirm',
     cancel: 'Cancel',

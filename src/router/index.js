@@ -51,6 +51,25 @@ const routes = [
     ]
   },
 
+  /** ----导出订单---- **/
+  {
+    path: '/export',
+    name: 'Export',
+    redirect: '/export/order',
+    component: Layout,
+    children: [
+      {
+        path: '/export/order',
+        name: 'ExportOrder',
+        component:() => import('../views/export/index.vue'),
+        meta: {
+          name: 'ExportOrder',
+          breadcrumb : [{ text: 'message.export', url: '/export/order' }]
+        }
+      }
+    ]
+  },
+
   /** ----数据分析---- **/
   {
     path: '/data',

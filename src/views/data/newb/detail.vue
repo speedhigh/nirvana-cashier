@@ -190,7 +190,7 @@ export default {
 
 <style scoped>
   section {
-    @apply w-full bg-white rounded-lg pt-5 pb-6 px-6 shadow backdrop-blur-sm
+    @apply w-full bg-white rounded-lg pt-5 pb-6 px-6 shadow
   }
   .chart-box {
     @apply mt-3 w-full h-72 rounded-2xl border px-1 pt-5 pb-2

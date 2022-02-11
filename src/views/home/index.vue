@@ -8,7 +8,7 @@
     <section-todo ref="todoRef" @handle="handle" />
   </main>
   <!-- 弹出info -->
-  <dialog-info :id="dialog.id" :show="dialog.show" @close="dialogClose" @change="dialogChange" />
+  <dialog-info :id="dialog.id" :shenfen="dialog.shenfen" :show="dialog.show" @close="dialogClose" @change="dialogChange" />
 </template>
 
 <script>
@@ -28,14 +28,16 @@ export default {
     const todoRef = ref(null)
     const dialog = reactive({
       id: '',
+      shenfen: '',
       show: false
     })
     return {
       todoRef,
       dialog,
-      handle(id) {
+      handle(id, shenfen) {
         dialog.show = true
         dialog.id = id
+        shenfen === '集团大客户' ? dialog.shenfen = 'cnewb' : dialog.shenfen = 'newb'
       },
       dialogClose() {
         dialog.show = false
@@ -50,6 +52,6 @@ export default {
 
 <style scoped>
   section {
-    @apply w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm
+    @apply w-full h-full bg-white rounded-lg py-5 px-6 shadow
   }
 </style>

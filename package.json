@@ -14,17 +14,20 @@
     "@heroicons/vue": "^1.0.5",
     "@tailwindcss/line-clamp": "^0.3.1",
     "crypto-js": "^4.1.1",
+    "dayjs": "^1.10.7",
     "default-passive-events": "^2.0.0",
     "echarts": "^5.2.2",
     "echarts-gl": "^2.0.8",
     "element-plus": "^1.2.0-beta.6",
+    "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",
     "vue": "^3.2.27",
     "vue-i18n": "^9.2.0-beta.28",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "xlsx": "^0.18.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

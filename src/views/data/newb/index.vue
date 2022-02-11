@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
+  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow">
     <!-- top 
     <div class="flex items-center">
       <el-select placeholder="选择区域" size="large">
@@ -28,14 +28,15 @@
     >
       <template #default="slotProps">
         <el-table :data="slotProps.list" border stripe style="width: 100%">
-          <el-table-column prop="id" label="高级经理ID" min-width="160" />
-          <el-table-column prop="yonghuming" label="高级经理用户名" min-width="190" />
-          <el-table-column prop="lianxifangshi" label="联系方式" min-width="190" />
-          <el-table-column prop="zhuceriqi" label="注册日期" min-width="280" />
-          <el-table-column prop="shangjiid" label="上级ID" min-width="120" />
-          <el-table-column prop="leijidingdanshuliang" label="累计订单数量" min-width="190" />
-          <el-table-column prop="leijidingdanjine" label="累计订单金额(元)" min-width="190" />
-          <el-table-column prop="leijidingdanshouyi" label="累计订单收益(元)" min-width="190" />
+          <el-table-column prop="id" label="高级经理ID" min-width="130" />
+          <el-table-column prop="yonghuming" label="高级经理用户名" min-width="150" />
+          <el-table-column prop="lianxifangshi" label="联系方式" min-width="180" />
+          <el-table-column prop="shenfenzhenghao" label="身份证号" min-width="250" />
+          <el-table-column prop="zhuceriqi" label="注册日期" min-width="180" />
+          <el-table-column prop="shangjiid" label="上级ID" min-width="130" />
+          <el-table-column prop="leijidingdanshuliang" label="累计订单数量" min-width="150" />
+          <el-table-column prop="leijidingdanjine" label="累计订单金额(元)" min-width="150" />
+          <el-table-column prop="leijidingdanshouyi" label="累计订单收益(元)" min-width="150" />
           <el-table-column label="操作">
             <template #default="scope">
               <p class="text-red-700 underline cursor-pointer" @click="handleEdit(scope.$index, scope.row)">查看信息</p>

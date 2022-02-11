@@ -1,29 +1,5 @@
 <template>
-  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow backdrop-blur-sm">
-    <!-- top
-    <div class="flex items-center">
-      <el-date-picker
-        type="daterange"
-        range-separator="—"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期"
-      />
-      <el-select placeholder="选择区域" size="large" class="ml-5">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-      <el-input
-        class="w-64 ml-auto"
-        placeholder="搜索"
-        :suffix-icon="Search"
-      />
-    </div>
-    -->
+  <div class="w-full h-full bg-white rounded-lg py-5 px-6 shadow">
     <!-- content -->
     <base-pagination
       :params="params"
@@ -32,7 +8,7 @@
       class="mt-5"
     >
       <template #default="slotProps">
-        <el-table :data="slotProps.list" border stripe style="width: 100%">
+        <el-table id="table-data" :data="slotProps.list" border stripe style="width: 100%">
           <el-table-column prop="xiadanshijian" label="下单时间" min-width="185" />
           <el-table-column prop="gaojijingliid" label="高级经理ID" min-width="180" />
           <el-table-column prop="gaojijingliyonghuming" label="高级经理用户名" min-width="185" />
@@ -53,25 +29,23 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { Search } from '@element-plus/icons-vue'
+// import { Search } from '@element-plus/icons-vue'
 export default {
   setup() {
     const router = useRouter()
-    const params = reactive({})
-    const options = ref([
-      { value: '环翠区', label: '环翠区' },
-      { value: '经区', label: '经区' },
-      { value: '高区', label: '高区' }
-    ])
+    const params = reactive({
+      // date: [],
+      // name: '',
+      // drug: '',
+      // withdraw: ''
+    })
     return {
-      Search,
+     // Search,
       params,
-      options,
-      handleEdit(index, data) {
-        router.push('/data/order/detail/' + data.orderid)
-      }
+      // 查看信息
+      handleEdit(index, data) { router.push('/data/order/detail/' + data.orderid) },
     }
   }
 }
