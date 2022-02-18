@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-screen relative">
-    <div 
-      class="absolute left-0 inset-y-auto h-full z-10 bg-aside-bg bg-center bg-no-repeat bg-cover" 
+    <div
+      class="absolute left-0 inset-y-auto h-full z-10 bg-aside-bg bg-center bg-no-repeat bg-cover"
       :class="isCollapse ? 'w-[64px]' : 'w-[208px]'"
     />
     <!-- 侧边栏 -->
@@ -16,7 +16,7 @@
         :collapse-transition="false"
         router
       >
-        <div 
+        <div
           class="h-[3.75rem] py-4 z-50 relative"
           :class="isCollapse ? 'px-3.5' : 'px-6 mb-4'"
         >
@@ -162,7 +162,7 @@
       <!-- 面包屑 -->
       <div class="w-full h-12 flex-shrink-0 bg-white flex items-center px-6 border-b border-gray-200">
         <div
-          v-for="(item, index) in $route.meta.breadcrumb" 
+          v-for="(item, index) in $route.meta.breadcrumb"
           :key="index"
           class="flex items-center"
         >

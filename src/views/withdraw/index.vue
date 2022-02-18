@@ -19,12 +19,12 @@
         >
           <el-table-column prop="shijian" label="时间" min-width="150" />
           <el-table-column prop="shenqingren" label="申请大客户" min-width="120" />
-          <el-table-column prop="shenqingjine" label="申请金额" min-width="130" />
-          <el-table-column prop="profit" label="打款金额" min-width="130" />
+          <el-table-column prop="shenqingjine" label="申请金额(HK$)" min-width="130" />
+          <el-table-column prop="profit" label="打款金额(￥)" min-width="130" />
           <el-table-column prop="shenpiren" label="审核人" min-width="120" />
           <el-table-column prop="beizhu" label="备注" min-width="240" />
           <el-table-column prop="zhuangtai" label="状态" min-width="140" align="center" />
-          <el-table-column label="操作" min-width="90"> 
+          <el-table-column label="操作" min-width="90">
             <template #default="scope">
               <!-- 待审核 -->
               <button
@@ -45,16 +45,16 @@
                 {{ scope.row.caiwushenfen === '财务出纳（提现）' ? '去处理' : '立即查看' }}
               </button>
               <!-- 审核不通过或提现失败 -->
-              <button 
-                v-if="scope.row.zhuangtai === '审核不通过或提现失败'" 
+              <button
+                v-if="scope.row.zhuangtai === '审核不通过或提现失败'"
                 class="w-16 h-6 text-xs text-red-700 underline hover:font-bold hover:text-sm"
                 @click="handle(scope.row.id, scope.row.shenfen)"
               >
                 查看信息
               </button>
               <!-- 已审核已提现 -->
-              <button 
-                v-if="scope.row.zhuangtai === '已审核已提现'" 
+              <button
+                v-if="scope.row.zhuangtai === '已审核已提现'"
                 class="w-16 h-6 text-xs text-teal-700 underline hover:font-bold hover:text-sm"
                 @click="handle(scope.row.id, scope.row.shenfen)"
               >

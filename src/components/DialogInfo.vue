@@ -12,9 +12,9 @@
     </template>
 
     <!-- body -->
-    <div class="-mt-3 space-y-5">
+    <div class="-mt-5 space-y-3">
       <!-- 申请大客户 -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
           <h3>申请大客户</h3>
@@ -25,7 +25,7 @@
       </div>
 
       <!-- 申请时间 -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
           <h3>申请时间</h3>
@@ -36,10 +36,10 @@
       </div>
 
       <!-- 申请金额 -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
-          <h3>申请金额</h3>
+          <h3>申请金额(HK$)</h3>
         </div>
         <div class="content">
           <p class="leading-10">{{ info.shenqingjine }}</p>
@@ -47,18 +47,40 @@
       </div>
 
       <!-- 打款金额 -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
-          <h3>打款金额</h3>
+          <h3>打款金额(￥)</h3>
         </div>
         <div class="content">
           <p class="leading-10">{{ info.profit }}</p>
         </div>
       </div>
 
+      <!-- 开户银行 -->
+      <div class="space-y-1.5">
+        <div class="flex items-center space-x-2.5">
+          <div class="tag" />
+          <h3>开户银行</h3>
+        </div>
+        <div class="content">
+          <p class="leading-10">{{ info.kaihuhang }}</p>
+        </div>
+      </div>
+
+      <!-- 银行卡号 -->
+      <div class="space-y-1.5">
+        <div class="flex items-center space-x-2.5">
+          <div class="tag" />
+          <h3>银行卡号</h3>
+        </div>
+        <div class="content">
+          <p class="leading-10">{{ info.cardnum }}</p>
+        </div>
+      </div>
+
       <!-- 审批人 -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
           <h3>审批人</h3>
@@ -69,7 +91,7 @@
       </div>
 
       <!-- 备注 remark -->
-      <div class="space-y-2">
+      <div class="space-y-1.5">
         <div class="flex items-center space-x-2.5">
           <div class="tag" />
           <h3>备注</h3>

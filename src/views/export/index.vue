@@ -96,7 +96,7 @@ export default {
       params,
       // 导出excel
       exportTable() {
-        let box = xlsx.utils.table_to_book(document.querySelector('#table-data'))
+        let box = xlsx.utils.table_to_book(document.querySelector('#table-data'), { raw: true })
         let out = xlsx.write(box, {bookType: 'xlsx', bookSST: true, type: 'array'})
         try {fileSaver.saveAs(new Blob([out], {type: 'application/octet-stream'}),'sheet.xlsx')}
         catch (error) { console.log(error) }
