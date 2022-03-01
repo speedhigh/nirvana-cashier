@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%] bg-white rounded-lg pt-5 px-6 pb-8 shadow">
+  <div class="w-full bg-white rounded-lg pt-5 px-6 pb-8 shadow">
     <h2>{{$t(`message.todo`)}}</h2>
     <div 
       v-for="(item, index) in list" 
