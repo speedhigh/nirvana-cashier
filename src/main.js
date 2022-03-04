@@ -23,9 +23,7 @@ app.directive('resize', {
    function debounce(fn, delay = 16) {
      let t = null
      return function () {
-       if (t) {
-        clearTimeout(t)
-       }
+       if (t) clearTimeout(t)
        const context = this
        const args = arguments
        t = setTimeout(function () {
