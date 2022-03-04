@@ -5,7 +5,7 @@
       <h2>{{$t(`message.recentOrders`)}}</h2>
       <router-link 
         v-show="order.list.length > 0" 
-        to="/data/order" 
+        to="/data/order"
         class="ml-auto text-gray-500 cursor-pointer hover:text-gray-800"
       >
         {{$t(`message.more`)}} >
@@ -25,7 +25,7 @@
       <el-table-column prop="dingdanshouyi" label="收益额（元）" min-width="120" />
       <el-table-column prop="shangjiid" label="上级 ID" />
     </el-table>
-    <el-empty v-if="!order.loading && order.list.length === 0" description=" " class="mt-6 text-gray-500">{{ $t(`message.noOrder`) }}</el-empty>
+    <el-empty v-if="!order.loading && order.list.length === 0" description=" " class="text-gray-500 text-sm">{{ $t(`message.noOrder`) }}</el-empty>
   </section>
 </template>
 
@@ -39,7 +39,8 @@ export default {
       loading: true,
       list: []
     })
-    api.get("/home/getOrdersRecent").then((res) => { 
+    api.get("/home/getOrdersRecent").then((res) => {
+      console.log(res)
       order.list = res.data.data
       order.loading = false
     })

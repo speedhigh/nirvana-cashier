@@ -49,7 +49,7 @@
         <el-table-column prop="shouyi" label="收益（元）" />
       </el-table>
     </div>
-    <el-empty v-show="!showLoading && orderList.length === 0" description=" " :image-size="200" class="text-gray-500 mt-40">暂无数据</el-empty>
+    <el-empty v-show="!showLoading && orderList.length === 0" description="" :image-size="200" class="text-gray-500 mt-40">暂无数据</el-empty>
   </div>
 </template>
 

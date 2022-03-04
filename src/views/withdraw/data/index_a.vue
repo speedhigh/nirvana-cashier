@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%] h-full bg-white rounded-lg pt-2 pb-5 px-6 shadow">
+  <div class="w-full h-full bg-white rounded-lg pt-2 pb-5 px-6 shadow">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
       <el-tab-pane label="大客户提现" name="/home/getTiXiansPage" />
       <el-tab-pane label="高级经理提现" name="/home/getTiXiansPage_NewB" />

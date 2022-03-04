@@ -42,7 +42,6 @@ export default {
     }
   },
   setup(props) {
-    console.log(props.params)
     const BasePaginationMitt = mitt()
     BasePaginationMitt.on('refresh',() => { askApi() })
     const loading = ref(true)
@@ -70,7 +69,7 @@ export default {
     }
     askApi()
     watch(props.params, (value) => {
-      console.log(value)
+      console.log('params',value)
       askApi(false)
     }, {
       deep: true

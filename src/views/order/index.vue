@@ -38,11 +38,7 @@
       <!-- 展示数量 -->
       <div class="ml-auto">
         <span class="text-gray-500">展示数量：</span>
-        <el-input
-          v-model="size"
-          type="number"
-          class="w-24"
-        />
+        <el-input v-model="size" type="number" class="w-24" />
       </div>
     </div>
 
@@ -90,8 +86,12 @@ export default {
       date,
       size,
       changeDate(d) {
-        params.datestart = dayjs(d[0]).format('YYYY-MM-DD')
-        params.dateend = dayjs(d[1]).format('YYYY-MM-DD')
+        if(d) {
+          params.datestart = dayjs(d[0]).format('YYYY-MM-DD')
+          params.dateend = dayjs(d[1]).format('YYYY-MM-DD')
+        } else {
+          params.datestart = params.dateend = ''
+        }
       },
       params,
       // 导出excel

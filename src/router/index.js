@@ -32,140 +32,102 @@ const routes = [
     ]
   },
 
-  /** ----待办信息---- **/
-  {
-    path: '/todo',
-    name: 'Todo',
-    redirect: '/todo/list',
-    component: Layout,
-    children: [
-      {
-        path: '/todo/list',
-        name: 'TodoList',
-        component:() => import('../views/todo/index.vue'),
-        meta: {
-          name: 'TodoList',
-          breadcrumb : [{ text: 'message.todo', url: '/todo/list' }]
-        }
-      }
-    ]
-  },
-
-  /** ----导出订单---- **/
-  {
-    path: '/export',
-    name: 'Export',
-    redirect: '/export/order',
-    component: Layout,
-    children: [
-      {
-        path: '/export/order',
-        name: 'ExportOrder',
-        component:() => import('../views/export/index.vue'),
-        meta: {
-          name: 'ExportOrder',
-          breadcrumb : [{ text: 'message.export', url: '/export/order' }]
-        }
-      }
-    ]
-  },
-
-  /** ----数据分析---- **/
-  {
-    path: '/data',
-    name: 'data',
-    redirect: '/data/order',
-    component: Layout,
-    children: [
-      // 订单列表
-      {
-        path: '/data/order',
-        name: 'OrderList',
-        component:() => import('../views/data/order/index.vue'),
-        meta: {
-          name: 'OrderData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/order' }, { text: 'message.orderData', url: '/data/order' }]
-        }
-      },
-      // 订单详情
-      {
-        path: '/data/order/detail/:id',
-        name: 'OrderDetail',
-        component:() => import('../views/data/order/detail.vue'),
-        meta: {
-          name: 'OrderData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/order' }, { text: 'message.orderData', url: '/data/order' }, { text: 'message.orderDetail', url: '/data/order/detail/:id' }]
-        }
-      },
-      // 订单分析
-      {
-        path: '/data/analyze',
-        name: 'OrderAnalyze',
-        component:() => import('../views/data/analyze/index.vue'),
-        meta: {
-          name: 'OrderAnalyze',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/analyze/index.vue' }, { text: 'message.orderAnalysis', url: '/data/analyze/index.vue' }]
-        }
-      },
-      // 大客户数据
-      {
-        path: '/data/cnewb',
-        name: 'CnewbList',
-        component:() => import('../views/data/cnewb/index.vue'),
-        meta: {
-          name: 'CnewbData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/cnewb' }, { text: 'message.customerData', url: '/data/cnewb' }]
-        }
-      },
-      // 大客户数据详情
-      {
-        path: '/data/cnewb/detail/:id',
-        name: 'CnewbDetail',
-        component:() => import('../views/data/cnewb/detail.vue'),
-        meta: {
-          name: 'CnewbData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/cnewb' }, { text: 'message.customerData', url: '/data/cnewb' }, { text: 'message.customerDetail', url: '/data/cnewb/detail/:id' }]
-        }
-      },
-      // 高级经理数据
-      {
-        path: '/data/newb',
-        name: 'NewbList',
-        component:() => import('../views/data/newb/index.vue'),
-        meta: {
-          name: 'NewbData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/newb' }, { text: 'message.managerData', url: '/data/newb' }]
-        }
-      },
-      // 高级经理数据详情
-      {
-        path: '/data/newb/detail/:id',
-        name: 'NewbDetail',
-        component:() => import('../views/data/newb/detail.vue'),
-        meta: {
-          name: 'NewbData',
-          breadcrumb : [{ text: 'message.dataAnalysis', url: '/data/newb' }, { text: 'message.managerData', url: '/data/newb' }, { text: 'message.managerDetail', url: '/data/newb/detail/:id' }]
-        }
-      },
-    ]
-  },
-
   /** ----提现管理---- **/
   {
     path: '/withdraw',
     name: 'Withdraw',
-    redirect: '/withdraw/list',
+    redirect: '/withdraw/todo',
+    component: Layout,
+    children: [
+      // 待办信息
+      {
+        path: '/withdraw/todo',
+        name: 'WithdrawTodo',
+        component:() => import('../views/withdraw/todo/index.vue'),
+        meta: {
+          name: 'WithdrawTodo',
+          breadcrumb : [{ text: 'message.withdrawals', url: '/withdraw/todo' }, { text: 'message.todo', url: '/withdraw/todo' }]
+        }
+      },
+      // 提现数据
+      {
+        path: '/withdraw/data',
+        name: 'WithdrawData',
+        component:() => import('../views/withdraw/data/index.vue'),
+        meta: {
+          name: 'WithdrawData',
+          breadcrumb : [{ text: 'message.withdrawals', url: '/withdraw/data' }, { text: 'message.withdrawData', url: '/withdraw/data' }]
+        }
+      }
+    ]
+  },
+
+  /** ----订单数据---- **/
+  {
+    path: '/order',
+    name: 'Order',
+    redirect: '/order/data',
     component: Layout,
     children: [
       {
-        path: '/withdraw/list',
-        name: 'Withdraw',
-        component:() => import('../views/withdraw/index.vue'),
+        path: '/order/data',
+        name: 'OrderData',
+        component:() => import('../views/order/index.vue'),
         meta: {
-          name: 'Withdraw',
-          breadcrumb : [{ text: 'message.withdrawals', url: '/withdraw/list' }]
+          name: 'OrderData',
+          breadcrumb : [{ text: 'message.orderData', url: '/order/data' }]
         }
       }
+    ]
+  },
+
+  /** ----客户资料---- **/
+  {
+    path: '/customer',
+    name: 'Customer',
+    redirect: '/customer/order',
+    component: Layout,
+    children: [
+      // 大客户资料
+      {
+        path: '/customer/cnewb',
+        name: 'CnewbList',
+        component:() => import('../views/customer/cnewb/index.vue'),
+        meta: {
+          name: 'CnewbCustomer',
+          breadcrumb : [{ text: 'message.customerProfiles', url: '/customer/cnewb' }, { text: 'message.cnewbProfiles', url: '/customer/cnewb' }]
+        }
+      },
+      // 大客户资料详情
+      {
+        path: '/customer/cnewb/detail/:id',
+        name: 'CnewbDetail',
+        component:() => import('../views/customer/cnewb/detail.vue'),
+        meta: {
+          name: 'CnewbCustomer',
+          breadcrumb : [{ text: 'message.customerProfiles', url: '/customer/cnewb' }, { text: 'message.cnewbProfiles', url: '/customer/cnewb' }, { text: 'message.cnewbDetail', url: '/customer/cnewb/detail/:id' }]
+        }
+      },
+      // 高级经理资料
+      {
+        path: '/customer/newb',
+        name: 'NewbList',
+        component:() => import('../views/customer/newb/index.vue'),
+        meta: {
+          name: 'NewbCustomer',
+          breadcrumb : [{ text: 'message.customerProfiles', url: '/customer/newb' }, { text: 'message.newbProfiles', url: '/customer/newb' }]
+        }
+      },
+      // 高级经理资料详情
+      {
+        path: '/customer/newb/detail/:id',
+        name: 'NewbDetail',
+        component:() => import('../views/customer/newb/detail.vue'),
+        meta: {
+          name: 'NewbCustomer',
+          breadcrumb : [{ text: 'message.customerProfiles', url: '/customer/newb' }, { text: 'message.newbProfiles', url: '/customer/newb' }, { text: 'message.newbDetail', url: '/customer/newb/detail/:id' }]
+        }
+      },
     ]
   },
 
